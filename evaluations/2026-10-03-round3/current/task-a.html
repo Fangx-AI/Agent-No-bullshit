@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JSON 格式化</title>
+<style>
+:root{color-scheme:light;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#17332f;background:#f5f7f2}*{box-sizing:border-box}body{margin:0}main{max-width:1100px;margin:auto;padding:60px 28px}.eyebrow{color:#387065;font-size:13px;letter-spacing:.15em;font-weight:700}h1{font-size:36px;margin:12px 0}p{color:#667a73;line-height:1.6}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0 20px}button{border:1px solid #c8d6cd;border-radius:10px;background:white;color:#234c41;padding:11px 18px;font:inherit;cursor:pointer}button.primary{background:#226650;border-color:#226650;color:white}button:disabled{opacity:.5;cursor:default}button:focus-visible,textarea:focus-visible{outline:3px solid #8dd9bb;outline-offset:3px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.panel{background:white;border:1px solid #dce4db;border-radius:16px;overflow:hidden}.panel-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #e7eee5}.panel-head label{font-weight:650}.hint{font-size:12px;color:#6c8178}textarea{display:block;width:100%;min-height:380px;padding:20px;border:0;resize:vertical;color:#183e30;background:#fff;font:14px/1.7 Consolas,monospace;tab-size:2}textarea:focus{outline:none}textarea[readonly]{background:#fcfdfb}.status{margin-top:18px;min-height:28px;padding:0 3px;font-size:14px;color:#276650}.status.error{color:#a33f2c}.foot{font-size:12px;margin-top:34px;color:#758078}@media(max-width:720px){main{padding:32px 18px}.grid{grid-template-columns:1fr}h1{font-size:30px}textarea{min-height:240px}}
+</style>
+</head>
+<body><main>
+<div class="eyebrow">小工具 / 01</div><h1>JSON 格式化</h1><p>粘贴 JSON，让结构清晰起来。</p>
+<div class="toolbar"><button id="format" class="primary">格式化</button><button id="copy" disabled>复制结果</button><button id="clear">清空</button></div>
+<div class="grid"><section class="panel"><div class="panel-head"><label for="input">原始 JSON</label><span class="hint">2 空格缩进</span></div><textarea id="input" spellcheck="false" placeholder='例如：{"name":"小林","topics":["设计","技术"]}'></textarea></section><section class="panel"><div class="panel-head"><label for="output">格式化结果</label><span id="count" class="hint"></span></div><textarea id="output" readonly spellcheck="false" placeholder="格式化结果会显示在这里"></textarea></section></div>
+<div id="status" class="status" role="status" aria-live="polite"></div><p class="foot">支持对象、数组、字符串、数字、布尔值和 null。</p>
+</main>
+<script>
+'use strict';
+const input=document.getElementById('input'),output=document.getElementById('output'),copy=document.getElementById('copy'),status=document.getElementById('status'),count=document.getElementById('count');
+let revision=0;
+function message(text,error=false){status.textContent=text;status.className='status'+(error?' error':'');}
+function invalidate(){revision++;output.value='';count.textContent='';copy.disabled=true;copy.textContent='复制结果';message('');}
+input.addEventListener('input',invalidate);
+document.getElementById('format').addEventListener('click',()=>{
+  invalidate();
+  if(!input.value.trim()){message('请先粘贴 JSON，再点击格式化。',true);input.focus();return;}
+  try{output.value=JSON.stringify(JSON.parse(input.value),null,2);copy.disabled=false;count.textContent=output.value.split('\n').length+' 行';message('已格式化，可复制结果。');}
+  catch(error){const match=error.message.match(/position (\d+)/);let detail='JSON 格式有误。';if(match){const before=input.value.slice(0,Number(match[1])),lines=before.split('\n');detail='第 '+lines.length+' 行、第 '+(lines.at(-1).length+1)+' 列附近有格式错误。';}else if(/end of JSON/i.test(error.message)){detail='JSON 内容不完整。';}message(detail+'请检查引号、逗号与括号后重试。',true);input.focus();}
+});
+copy.addEventListener('click',async()=>{
+  const value=output.value,version=revision;if(!value)return;
+  copy.disabled=true;copy.textContent='复制中…';
+  try{if(!navigator.clipboard||!navigator.clipboard.writeText)throw new Error('unavailable');await navigator.clipboard.writeText(value);if(version===revision)message('已复制结果。');}
+  catch(error){if(version===revision){output.focus();output.select();message('无法自动复制，结果已选中。请按 Ctrl+C（Mac 使用 ⌘C）复制。',true);}}
+  finally{if(version===revision){copy.disabled=false;copy.textContent='复制结果';}}
+});
+document.getElementById('clear').addEventListener('click',()=>{input.value='';invalidate();message('已清空。');input.focus();});
+</script></body></html>

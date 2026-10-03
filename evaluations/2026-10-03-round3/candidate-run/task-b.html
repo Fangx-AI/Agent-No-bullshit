@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>预约访谈 · 声场播客</title>
+<style>
+:root{color-scheme:light;--ink:#242639;--muted:#79798a;--accent:#6850cb;--line:#e5e3ee}*{box-sizing:border-box}body{margin:0;background:#f5f3f9;color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:default}.top{height:76px;display:flex;align-items:center;justify-content:space-between;max-width:1160px;margin:auto;padding:0 30px}.brand{display:flex;align-items:center;gap:10px;font-weight:750;font-size:17px}.logo{display:flex;align-items:center;gap:3px;height:26px}.logo i{display:block;width:4px;border-radius:4px;background:var(--accent)}.logo i:nth-child(1),.logo i:nth-child(5){height:10px}.logo i:nth-child(2),.logo i:nth-child(4){height:19px}.logo i:nth-child(3){height:26px}.top span{color:var(--muted);font-size:13px}.layout{max-width:1100px;margin:28px auto 60px;display:grid;grid-template-columns:340px 1fr;background:white;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 15px 50px #3329650a}.intro{padding:40px 32px;color:#f6f3ff;background:#29233f;position:relative;overflow:hidden}.eyebrow{font-size:12px;letter-spacing:2px;color:#b7a9e3}h1{font-size:34px;line-height:1.32;margin:17px 0 19px;font-weight:720;letter-spacing:-1px}.intro p{color:#c0b9d0;font-size:14px;line-height:1.9;margin:0}.art{margin:32px 0;height:170px;position:relative;display:grid;place-items:center;border:1px solid #ffffff13;border-radius:16px;background:linear-gradient(135deg,#48406a,#31284c)}.art svg{width:120px;height:120px}.record-dot{position:absolute;top:16px;left:16px;color:#cbbced;font-size:10px;letter-spacing:2px}.record-dot:before{content:'';display:inline-block;width:6px;height:6px;background:#b59bf3;border-radius:50%;margin-right:6px}.details{display:grid;gap:16px;margin-top:28px}.detail{display:flex;gap:13px;font-size:13px;color:#ded8ed}.detail .symbol{width:22px;color:#bfa8ff;font-size:18px;line-height:1.4}.detail strong{display:block;color:#f3effb;font-size:14px;font-weight:600}.detail small{font-size:12px;color:#aca3bf}.formside{padding:40px 42px}.step{display:flex;gap:11px;align-items:center;font-size:18px;font-weight:700;margin-bottom:16px}.step b{height:24px;width:24px;border-radius:50%;background:#eee9fa;color:var(--accent);font-size:12px;text-align:center;line-height:24px}.date-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:13px}.date-row label{font-size:13px;color:var(--muted)}input[type=date]{border:1px solid var(--line);border-radius:8px;padding:8px;color:var(--ink);max-width:190px}.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px;margin-bottom:20px}.day{background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 3px;color:var(--muted);font-size:11px}.day strong{display:block;font-size:19px;color:var(--ink);margin-top:3px;font-weight:650}.day.selected{border-color:var(--accent);background:#f4f0ff;color:var(--accent)}.day.selected strong{color:var(--accent)}.slot-title{font-size:12px;color:var(--muted);margin:0 0 10px}.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.slot{background:#fff;border:1px solid var(--line);padding:9px 5px;border-radius:8px;color:var(--ink);font-size:14px}.slot.selected{border-color:var(--accent);background:#f3efff;color:var(--accent);box-shadow:0 0 0 1px var(--accent)}.slot:disabled{color:#aea9bd;background:#f8f7fa;text-decoration:line-through}.empty-slots{font-size:13px;color:var(--muted);background:#f8f6fb;padding:14px;border-radius:8px;grid-column:1/-1}.contact{margin-top:30px;padding-top:27px;border-top:1px solid var(--line)}.fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field label{display:block;font-size:13px;margin-bottom:7px;font-weight:600}.field input{width:100%;border:1px solid var(--line);border-radius:8px;padding:11px 12px;background:#fff;color:var(--ink);font-size:14px}.field input[aria-invalid=true]{border-color:#bd3f49}.field-error{min-height:22px;font-size:12px;color:#ad3340;margin:4px 0 0}.chosen{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding:14px 0;color:var(--muted);font-size:12px;gap:12px}.chosen strong{font-size:13px;color:var(--ink);font-weight:600}.submit{width:100%;border:0;border-radius:10px;background:var(--accent);color:#fff;padding:13px;font-weight:650}.submit:disabled{opacity:.6}.status{font-size:13px;margin:11px 0 0;min-height:22px;color:#ad3340}.status.neutral{color:var(--muted)}.receipt{margin-top:16px;padding:18px 20px;border:1px solid #bfcfbd;background:#f3f8f2;border-radius:12px}.receipt h2{margin:0 0 12px;font-size:16px;color:#36723d}.receipt dl{display:grid;grid-template-columns:50px 1fr;gap:6px 14px;font-size:13px;margin:0}.receipt dt{color:#63816a}.receipt dd{margin:0;overflow-wrap:anywhere}.receipt[hidden]{display:none}button:focus-visible,input:focus-visible{outline:3px solid #c8b9fa;outline-offset:3px}@media(max-width:900px){.layout{margin:15px 22px 40px;grid-template-columns:280px 1fr}.intro{padding:32px 26px}.formside{padding:32px 26px}h1{font-size:29px}.fields{grid-template-columns:1fr;gap:6px}}@media(max-width:680px){.layout{grid-template-columns:1fr;margin:10px 16px 32px;border-radius:18px}.top{padding:0 22px;height:64px}.top span{display:none}.intro{padding:27px}.intro h1{font-size:29px;margin:12px 0}.art{display:none}.intro p{max-width:450px}.details{grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}.detail{gap:6px}.detail strong{font-size:12px}.detail small{font-size:10px}.formside{padding:27px 22px}.day{font-size:10px}.day strong{font-size:17px}.fields{grid-template-columns:1fr}.date-row{align-items:center}.chosen{align-items:flex-start;flex-direction:column;gap:4px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="brand"><div class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>声场播客</div><span>每个人，都有值得被听见的故事。</span></header>
+<main class="layout">
+<aside class="intro"><div class="eyebrow">LET'S TALK</div><h1>给你的故事，<br>留一段时间。</h1><p>聊聊你的经历、创作与好奇心。<br>选择一个适合你的访谈时间。</p><div class="art" aria-hidden="true"><span class="record-dot">ON AIR</span><svg viewBox="0 0 120 120" fill="none"><path d="M28 68V56a32 32 0 0 1 64 0v12" stroke="#ccb8fa" stroke-width="7" stroke-linecap="round"/><rect x="19" y="55" width="20" height="36" rx="9" fill="#baa3ee"/><rect x="81" y="55" width="20" height="36" rx="9" fill="#baa3ee"/><path d="M91 89c0 11-13 18-31 18" stroke="#c8b3f7" stroke-width="4" stroke-linecap="round"/><rect x="48" y="100" width="21" height="12" rx="6" fill="#dccdff"/><path d="M52 58v15m8-23v31m8-23v15" stroke="#eee6ff" stroke-width="4" stroke-linecap="round"/></svg></div><div class="details"><div class="detail"><span class="symbol" aria-hidden="true">◷</span><div><strong>45 分钟</strong><small>一场轻松的对谈</small></div></div><div class="detail"><span class="symbol" aria-hidden="true">◉</span><div><strong>在线访谈</strong><small>选一个安静的角落</small></div></div><div class="detail"><span class="symbol" aria-hidden="true">◎</span><div><strong>北京时间</strong><small>UTC +8</small></div></div></div></aside>
+<section class="formside"><form id="booking" novalidate>
+<div class="step"><b>1</b>选择时间</div><div class="date-row"><label for="date">可选择未来 30 天</label><input id="date" type="date" required aria-label="预约日期"></div><div id="days" class="days" role="group" aria-label="近期日期"></div><p class="slot-title">可选时段 · 北京时间</p><div id="slots" class="slots" role="group" aria-label="预约时段"></div>
+<div class="contact"><div class="step"><b>2</b>留下联系方式</div><div class="fields"><div class="field"><label for="name">姓名</label><input id="name" autocomplete="name" maxlength="40" placeholder="怎么称呼你" required aria-describedby="nameError"><p id="nameError" class="field-error" aria-live="polite"></p></div><div class="field"><label for="email">邮箱</label><input id="email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required aria-describedby="emailError"><p id="emailError" class="field-error" aria-live="polite"></p></div></div></div>
+<div class="chosen"><span>已选时间</span><strong id="chosen">请选择一个时段</strong></div><button id="submit" class="submit" type="submit">提交演示预约</button><p id="status" class="status" role="status" aria-live="polite"></p>
+</form><section id="receipt" class="receipt" hidden aria-live="polite"><h2>预约预览已生成</h2><dl><dt>时间</dt><dd id="receiptTime"></dd><dt>姓名</dt><dd id="receiptName"></dd><dt>邮箱</dt><dd id="receiptEmail"></dd></dl></section></section>
+</main>
+<script>
+/* CORE_START */
+const Core={
+  today(now){const d=new Date(now+8*60*60*1000);return d.getUTCFullYear()+'-'+String(d.getUTCMonth()+1).padStart(2,'0')+'-'+String(d.getUTCDate()).padStart(2,'0');},
+  addDays(date,days){const d=new Date(date+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+days);return d.toISOString().slice(0,10);},
+  dateValid(date,today){return /^\d{4}-\d{2}-\d{2}$/.test(date)&&!Number.isNaN(Date.parse(date+'T12:00:00Z'))&&new Date(date+'T12:00:00Z').toISOString().slice(0,10)===date&&date>=today&&date<=this.addDays(today,30);},
+  slots(date,now){
+    const d=new Date(date+'T12:00:00Z'),weekday=d.getUTCDay();
+    if(Number.isNaN(d.getTime())||weekday===0||weekday===6)return [];
+    const times=['10:00','11:00','14:00','15:00','16:00','18:00'];
+    const current=new Date(now+8*60*60*1000),minute=current.getUTCHours()*60+current.getUTCMinutes();
+    return times.map((time,index)=>{const [h,m]=time.split(':').map(Number),past=date<this.today(now)||(date===this.today(now)&&h*60+m<=minute),full=(d.getUTCDate()+index)%4===0;return {time,available:!past&&!full,reason:past?'已结束':full?'不可选':''};});
+  },
+  validate(snapshot,now){
+    const errors={};
+    if(!this.dateValid(snapshot.date,this.today(now)))errors.date='请选择未来 30 天内的日期。';
+    else if(!this.slots(snapshot.date,now).some(slot=>slot.time===snapshot.time&&slot.available))errors.time='请选择一个可用时段。';
+    if(!snapshot.name.trim())errors.name='请填写姓名。';
+    else if(snapshot.name.trim().length>40)errors.name='姓名最多 40 个字符。';
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(snapshot.email.trim())||snapshot.email.trim().length>254)errors.email='请填写有效邮箱，例如 you@example.com。';
+    return errors;
+  }
+};
+/* CORE_END */
+const dateInput=document.getElementById('date'),nameInput=document.getElementById('name'),emailInput=document.getElementById('email'),status=document.getElementById('status'),submitButton=document.getElementById('submit'),receipt=document.getElementById('receipt');
+let selectedTime='',revision=0,busy=false;
+const weekdays=['周日','周一','周二','周三','周四','周五','周六'];
+function prettyDate(date){const parts=date.split('-');return Number(parts[1])+' 月 '+Number(parts[2])+' 日 '+weekdays[new Date(date+'T12:00:00Z').getUTCDay()];}
+function setBusy(value){busy=value;submitButton.disabled=value;submitButton.textContent=value?'正在生成…':'提交演示预约';}
+function changed(){revision++;const wasBusy=busy;setBusy(false);receipt.hidden=true;status.className='status neutral';status.textContent=wasBusy?'信息已更新，请重新提交。':'';}
+function updateSummary(){document.getElementById('chosen').textContent=selectedTime?prettyDate(dateInput.value)+' '+selectedTime+' · 45 分钟':'请选择一个时段';}
+function renderDays(){
+  const today=Core.today(Date.now());dateInput.min=today;dateInput.max=Core.addDays(today,30);
+  const host=document.getElementById('days');host.replaceChildren();
+  for(let i=0;i<7;i++){
+    const date=Core.addDays(today,i),button=document.createElement('button');button.type='button';button.className='day'+(date===dateInput.value?' selected':'');button.setAttribute('aria-pressed',String(date===dateInput.value));button.setAttribute('aria-label',prettyDate(date));
+    const label=document.createElement('span');label.textContent=i===0?'今天':weekdays[new Date(date+'T12:00:00Z').getUTCDay()];const number=document.createElement('strong');number.textContent=Number(date.slice(-2));button.append(label,number);
+    button.addEventListener('click',()=>{dateInput.value=date;selectDate();});host.append(button);
+  }
+}
+function renderSlots(){
+  const host=document.getElementById('slots');host.replaceChildren();const valid=Core.dateValid(dateInput.value,Core.today(Date.now())),slots=valid?Core.slots(dateInput.value,Date.now()):[];
+  if(!valid||!slots.some(slot=>slot.available)){const empty=document.createElement('div');empty.className='empty-slots';empty.textContent=valid?'这一天没有可选时段，换个日期试试。':'请选择未来 30 天内的日期。';host.append(empty);}
+  for(const slot of slots){const button=document.createElement('button');button.type='button';button.className='slot'+(slot.time===selectedTime?' selected':'');button.textContent=slot.time;button.disabled=!slot.available;button.setAttribute('aria-label',slot.time+(slot.reason?'，'+slot.reason:''));button.setAttribute('aria-pressed',String(slot.time===selectedTime));button.title=slot.reason;button.addEventListener('click',()=>{changed();selectedTime=slot.time;renderSlots();updateSummary();});host.append(button);}
+}
+function selectDate(){changed();selectedTime='';renderDays();renderSlots();updateSummary();}
+dateInput.addEventListener('change',selectDate);
+for(const input of [nameInput,emailInput])input.addEventListener('input',()=>{changed();input.removeAttribute('aria-invalid');document.getElementById(input.id+'Error').textContent='';});
+document.getElementById('booking').addEventListener('submit',event=>{
+  event.preventDefault();if(busy)return;
+  receipt.hidden=true;status.textContent='';status.className='status';
+  const snapshot={date:dateInput.value,time:selectedTime,name:nameInput.value.trim(),email:emailInput.value.trim()},errors=Core.validate(snapshot,Date.now());
+  if(!emailInput.validity.valid)errors.email='请填写有效邮箱，例如 you@example.com。';
+  for(const input of [nameInput,emailInput]){const message=errors[input.id]||'';document.getElementById(input.id+'Error').textContent=message;input.setAttribute('aria-invalid',String(!!message));}
+  if(Object.keys(errors).length){status.textContent=errors.date||errors.time||'';if(errors.date)dateInput.focus();else if(errors.time){const available=document.querySelector('.slot:not(:disabled)');if(available)available.focus();else dateInput.focus();}else(errors.name?nameInput:emailInput).focus();return;}
+  const version=revision;setBusy(true);status.className='status neutral';status.textContent='正在生成预约预览…';
+  setTimeout(()=>{
+    if(version!==revision)return;
+    setBusy(false);
+    const latestErrors=Core.validate(snapshot,Date.now());
+    if(latestErrors.time||latestErrors.date){selectedTime='';renderDays();renderSlots();updateSummary();status.className='status';status.textContent='这个时段已不可选，请重新选择。';return;}
+    document.getElementById('receiptTime').textContent=prettyDate(snapshot.date)+' '+snapshot.time+'（北京时间）';document.getElementById('receiptName').textContent=snapshot.name;document.getElementById('receiptEmail').textContent=snapshot.email;status.textContent='';receipt.hidden=false;
+  },450);
+});
+const initialToday=Core.today(Date.now());dateInput.value=initialToday;
+for(let i=0;i<7;i++){const candidate=Core.addDays(initialToday,i);if(Core.slots(candidate,Date.now()).some(slot=>slot.available)){dateInput.value=candidate;break;}}
+renderDays();renderSlots();updateSummary();
+</script>
+</body>
+</html>

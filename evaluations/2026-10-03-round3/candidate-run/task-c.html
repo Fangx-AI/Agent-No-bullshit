@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>课程资料 · 课间</title>
+<style>
+:root{color-scheme:light;--ink:#24352c;--muted:#7c8980;--green:#387459;--line:#e0e7e1;--bg:#f4f6f2}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:default}.nav{height:74px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:0 6vw;background:#fff}.brand{font-size:20px;font-weight:750;display:flex;align-items:center;gap:11px}.logo{background:var(--green);color:#fff;border-radius:9px;width:34px;height:34px;display:grid;place-items:center;font:700 21px/1 serif}.nav .active{font-size:13px;color:var(--green);background:#edf4ed;padding:7px 15px;border-radius:20px}.shell{max-width:1040px;margin:43px auto 60px;padding:0 28px}.heading{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px}.eyebrow{font-size:11px;letter-spacing:2px;color:var(--muted);margin-bottom:7px}h1{font-size:32px;line-height:1.25;letter-spacing:-1px;margin:0}.total{color:var(--muted);font-size:13px}.panel{background:white;border:1px solid var(--line);border-radius:15px;box-shadow:0 8px 30px #284e3510;overflow:hidden}.add-area{padding:25px 27px 21px}.add-area label{display:block;font-weight:650;font-size:13px;margin-bottom:9px}.add-row{display:flex;gap:10px}.input{border:1px solid #d9e2da;border-radius:8px;padding:11px 13px;background:white;color:var(--ink);min-width:0;font-size:14px}.input::placeholder{color:#a0aaa2}.add-row input{flex:1}.button{border:1px solid var(--line);border-radius:8px;padding:10px 19px;background:#fff;color:var(--ink);font-weight:600;font-size:14px}.primary{background:var(--green);border-color:var(--green);color:#fff;white-space:nowrap}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:19px 27px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fafcf9}.search{position:relative;max-width:350px;flex:1}.search span{position:absolute;left:12px;top:10px;color:#8f9e93;font-size:18px}.search input{width:100%;padding-left:35px;background:#fff}.selection{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--muted);white-space:nowrap}.delete{color:#a54339;background:#fff;border:1px solid #eed8d4;padding:9px 13px}.tablehead,.row{display:grid;grid-template-columns:27px 1fr 140px;gap:13px;align-items:center;padding:16px 27px}.tablehead{font-size:12px;color:var(--muted);border-bottom:1px solid var(--line);padding-top:12px;padding-bottom:12px}.tablehead .date,.row time{text-align:right}.row{border-bottom:1px solid #edf0ec}.row:last-child{border:0}.row.selected{background:#f2f7f1}.row label{display:flex;align-items:center;gap:12px;cursor:pointer;min-width:0}.row .name{overflow-wrap:anywhere;font-size:14px;font-weight:550}.doc{flex:none;width:31px;height:36px;border:1px solid #dfe7da;border-radius:6px;color:#82a074;background:#f5f8f2;display:grid;place-items:center;font-size:18px}.row time{color:var(--muted);font-size:12px}.check{appearance:auto;width:16px;height:16px;accent-color:var(--green);margin:0;cursor:pointer}.empty{padding:55px 20px 62px;text-align:center}.empty-art{margin:0 auto 13px;width:58px;height:63px;background:#eef3e9;border:1px solid #dbe5d3;border-radius:10px;display:grid;place-items:center;color:#7fa16e;font-size:28px;box-shadow:6px 6px 0 #f6f8f1}.empty strong{font-size:16px;font-weight:650}.empty p{font-size:13px;color:var(--muted);margin:5px 0 0}.footer{display:flex;justify-content:space-between;gap:20px;font-size:12px;color:var(--muted);padding:15px 27px;border-top:1px solid var(--line);background:#fdfefc}.status{font-size:13px;min-height:23px;margin-top:8px;color:#a33c30}.status.success{color:var(--green)}.retry{border:0;background:none;color:var(--green);text-decoration:underline;padding:0 0 0 10px;font-size:12px}.retry[hidden]{display:none}.undo-list{display:grid;gap:9px;margin-top:16px}.undo{display:flex;align-items:center;justify-content:space-between;gap:15px;background:#273e32;color:white;border-radius:11px;padding:14px 19px;box-shadow:0 5px 20px #24483213}.undo strong{font-weight:550;font-size:14px}.undo small{display:block;font-size:11px;color:#b5c8bb;margin-top:2px}.undo button{background:#f3f7ed;border:0;border-radius:6px;color:#2c563d;padding:7px 17px;font-size:13px;font-weight:650;white-space:nowrap}.privacy{display:flex;gap:6px;align-items:center}.privacy i{width:6px;height:6px;border-radius:50%;background:#76a479}button:focus-visible,input:focus-visible{outline:3px solid #a4c7ac;outline-offset:3px}@media(max-width:600px){.nav{padding:0 22px;height:66px}.shell{padding:0 16px;margin:30px auto}.heading{align-items:center}h1{font-size:28px}.add-area{padding:20px}.add-row{gap:7px}.button{padding:10px 13px}.toolbar{padding:15px 20px;flex-wrap:wrap}.search{max-width:none;flex-basis:100%}.selection{width:100%;justify-content:space-between}.tablehead,.row{padding-left:20px;padding-right:20px;grid-template-columns:23px 1fr;gap:9px}.tablehead .date,.row time{display:none}.footer{padding:14px 20px;flex-direction:column;gap:4px}.undo{padding:13px 15px}.empty{padding:40px 15px 48px}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="brand"><span class="logo" aria-hidden="true">课</span>课间</div><span class="active">课程资料</span></header>
+<main class="shell"><div class="heading"><div><div class="eyebrow">YOUR LEARNING LIBRARY</div><h1>课程资料</h1></div><span id="total" class="total">共 0 条资料</span></div>
+<section class="panel" aria-label="资料管理">
+<form id="addForm" class="add-area"><label for="materialName">新增资料</label><div class="add-row"><input id="materialName" class="input" maxlength="100" placeholder="例如：第 1 课讲义" autocomplete="off"><button id="add" class="button primary" type="submit">＋ 新增</button></div><div id="status" class="status" role="status" aria-live="polite"></div><button id="retry" class="retry" type="button" hidden>重试读取</button></form>
+<div class="toolbar"><label class="search"><span aria-hidden="true">⌕</span><input id="search" class="input" type="search" placeholder="搜索资料名" aria-label="搜索资料名"></label><div class="selection"><span id="selectedCount">已选 0 条</span><button id="delete" type="button" class="button delete" disabled>删除所选</button></div></div>
+<div class="tablehead"><input id="selectAll" class="check" type="checkbox" aria-label="勾选当前搜索结果"><span id="listLabel">资料名</span><span class="date">添加时间</span></div>
+<div id="list"></div>
+<div class="footer"><span>删除后可在 30 秒内撤销，超时无法恢复。</span><span class="privacy"><i aria-hidden="true"></i>保存在当前浏览器</span></div>
+</section><div id="undoList" class="undo-list" aria-label="可撤销的删除"></div>
+</main>
+<script>
+/* CORE_START */
+const Core={
+  empty(){return {version:1,materials:[],pending:[]};},
+  check(state){
+    if(!state||state.version!==1||!Array.isArray(state.materials)||!Array.isArray(state.pending))throw new Error('invalid state');
+    const seen=new Set();
+    function checkItem(item){if(!item||typeof item.id!=='string'||typeof item.name!=='string'||!item.name.trim()||!Number.isFinite(item.createdAt)||seen.has(item.id))throw new Error('invalid item');seen.add(item.id);}
+    state.materials.forEach(checkItem);
+    const transactions=new Set();state.pending.forEach(tx=>{if(!tx||typeof tx.id!=='string'||transactions.has(tx.id)||!Number.isFinite(tx.expiresAt)||!Array.isArray(tx.items)||!tx.items.length)throw new Error('invalid transaction');transactions.add(tx.id);tx.items.forEach(checkItem);});
+    return state;
+  },
+  visible(state,query){const term=query.trim().toLocaleLowerCase();return state.materials.filter(item=>item.name.toLocaleLowerCase().includes(term));},
+  add(state,name,now,id){
+    const clean=name.trim();
+    if(!clean)return {error:'请填写资料名。'};
+    if(clean.length>100)return {error:'资料名最多 100 个字符。'};
+    if(state.materials.some(item=>item.name.toLocaleLowerCase()===clean.toLocaleLowerCase()))return {error:'已有同名资料，请修改名称。'};
+    return {state:{...state,materials:[{id,name:clean,createdAt:now},...state.materials]}};
+  },
+  remove(state,ids,now,transactionId){
+    const selected=new Set(ids),items=state.materials.filter(item=>selected.has(item.id));
+    if(!items.length)return {state,count:0};
+    return {state:{...state,materials:state.materials.filter(item=>!selected.has(item.id)),pending:[{id:transactionId,items,expiresAt:now+30000},...state.pending]},count:items.length};
+  },
+  undo(state,id,now){
+    const tx=state.pending.find(transaction=>transaction.id===id);if(!tx)return {state,count:0,status:'missing'};
+    const pending=state.pending.filter(transaction=>transaction.id!==id);
+    if(now>=tx.expiresAt)return {state:{...state,pending},count:0,status:'expired',expiredCount:tx.items.length};
+    const existing=new Set(state.materials.map(item=>item.id)),restored=tx.items.filter(item=>!existing.has(item.id));
+    return {state:{...state,pending,materials:[...state.materials,...restored].sort((a,b)=>b.createdAt-a.createdAt)},count:restored.length,status:'restored'};
+  },
+  expire(state,now){const expired=state.pending.filter(tx=>now>=tx.expiresAt);return {state:{...state,pending:state.pending.filter(tx=>now<tx.expiresAt)},count:expired.reduce((sum,tx)=>sum+tx.items.length,0)};}
+};
+/* CORE_END */
+const STORAGE_KEY='ke-jian-course-materials-v1';
+const nameInput=document.getElementById('materialName'),searchInput=document.getElementById('search'),status=document.getElementById('status'),selectAll=document.getElementById('selectAll'),deleteButton=document.getElementById('delete'),retryButton=document.getElementById('retry');
+let state=Core.empty(),selected=new Set(),storageReady=false,undoSignature='';
+function id(){return globalThis.crypto&&typeof crypto.randomUUID==='function'?crypto.randomUUID():Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);}
+function message(text,success=false){status.textContent=text;status.className='status'+(success?' success':'');}
+function readStored(){const raw=localStorage.getItem(STORAGE_KEY);return raw===null?Core.empty():Core.check(JSON.parse(raw));}
+function persist(next){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(next));state=next;storageReady=true;retryButton.hidden=true;return true;}catch(error){message('保存失败，请允许当前浏览器使用本地存储后重试。');return false;}}
+function load(){try{state=readStored();storageReady=true;retryButton.hidden=true;const expired=Core.expire(state,Date.now());state=expired.state;if(expired.count)try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(error){}message('');}catch(error){storageReady=false;retryButton.hidden=false;message('无法读取已保存的资料，请重试或检查当前浏览器的本地存储。');}render();}
+function refreshBeforeChange(){if(!storageReady){message('请先重试读取资料。');return false;}try{state=Core.expire(readStored(),Date.now()).state;return true;}catch(error){storageReady=false;retryButton.hidden=false;message('无法读取已保存的资料，请重试。');render();return false;}}
+function dateLabel(timestamp){return new Intl.DateTimeFormat('zh-CN',{year:'numeric',month:'2-digit',day:'2-digit'}).format(timestamp);}
+function selectionControls(visible){const current=new Set(state.materials.map(item=>item.id));selected=new Set([...selected].filter(item=>current.has(item)));const checked=visible.filter(item=>selected.has(item.id)).length;selectAll.checked=visible.length>0&&checked===visible.length;selectAll.indeterminate=checked>0&&checked<visible.length;selectAll.disabled=!storageReady||!visible.length;deleteButton.disabled=!storageReady||!selected.size;document.getElementById('selectedCount').textContent='已选 '+selected.size+' 条';document.getElementById('add').disabled=!storageReady;}
+function renderList(){
+  const visible=Core.visible(state,searchInput.value),host=document.getElementById('list');host.replaceChildren();
+  document.getElementById('total').textContent='共 '+state.materials.length+' 条资料';document.getElementById('listLabel').textContent=searchInput.value.trim()?'资料名 · '+visible.length+' 条匹配':'资料名';
+  if(!visible.length){const empty=document.createElement('div');empty.className='empty';const art=document.createElement('div');art.className='empty-art';art.setAttribute('aria-hidden','true');art.textContent='≡';const title=document.createElement('strong');title.textContent=!storageReady?'资料读取未完成':state.materials.length?'没有找到资料':'你的资料库，从这里开始';const hint=document.createElement('p');hint.textContent=!storageReady?'点击“重试读取”再继续。':state.materials.length?'换个关键词再试试。':'输入资料名，添加第一条课程资料。';empty.append(art,title,hint);host.append(empty);}
+  for(const item of visible){const row=document.createElement('div');row.className='row'+(selected.has(item.id)?' selected':'');const check=document.createElement('input');check.type='checkbox';check.className='check';check.id='item-'+item.id;check.checked=selected.has(item.id);check.disabled=!storageReady;check.setAttribute('aria-label','勾选 '+item.name);check.addEventListener('change',()=>{if(check.checked)selected.add(item.id);else selected.delete(item.id);row.classList.toggle('selected',check.checked);selectionControls(visible);});const label=document.createElement('label');label.htmlFor=check.id;const icon=document.createElement('span');icon.className='doc';icon.textContent='≡';icon.setAttribute('aria-hidden','true');const title=document.createElement('span');title.className='name';title.textContent=item.name;label.append(icon,title);const time=document.createElement('time');time.dateTime=new Date(item.createdAt).toISOString();time.textContent=dateLabel(item.createdAt);row.append(check,label,time);host.append(row);}
+  selectionControls(visible);
+}
+function renderUndo(){
+  const host=document.getElementById('undoList'),now=Date.now(),active=state.pending.filter(tx=>tx.expiresAt>now),signature=active.map(tx=>tx.id+':'+tx.items.length).join('|');
+  if(signature===undoSignature){for(const tx of active){const remaining=document.getElementById('remaining-'+tx.id);if(remaining)remaining.textContent='剩余 '+Math.ceil((tx.expiresAt-now)/1000)+' 秒可撤销';}return;}
+  undoSignature=signature;host.replaceChildren();
+  for(const tx of active){const card=document.createElement('div');card.className='undo';const text=document.createElement('div');const title=document.createElement('strong');title.textContent='已删除 '+tx.items.length+' 条资料';const remaining=document.createElement('small');remaining.id='remaining-'+tx.id;remaining.textContent='剩余 '+Math.ceil((tx.expiresAt-now)/1000)+' 秒可撤销';text.append(title,remaining);const button=document.createElement('button');button.type='button';button.textContent='撤销';button.setAttribute('aria-label','撤销删除 '+tx.items.length+' 条资料');button.addEventListener('click',()=>undo(tx.id));card.append(text,button);host.append(card);}
+}
+function render(){renderList();renderUndo();}
+document.getElementById('addForm').addEventListener('submit',event=>{event.preventDefault();if(!refreshBeforeChange())return;const result=Core.add(state,nameInput.value,Date.now(),id());if(result.error){message(result.error);nameInput.focus();return;}if(persist(result.state)){nameInput.value='';message('资料已添加。',true);render();nameInput.focus();}});
+nameInput.addEventListener('input',()=>{if(storageReady)message('');});
+searchInput.addEventListener('input',renderList);
+selectAll.addEventListener('change',()=>{const visible=Core.visible(state,searchInput.value);for(const item of visible){if(selectAll.checked)selected.add(item.id);else selected.delete(item.id);}renderList();});
+deleteButton.addEventListener('click',()=>{if(!refreshBeforeChange())return;const result=Core.remove(state,[...selected],Date.now(),id());if(!result.count){message('所选资料已不在列表中。');render();return;}if(persist(result.state)){selected.clear();message('');render();}});
+function undo(transactionId){
+  if(!refreshBeforeChange())return;
+  const result=Core.undo(state,transactionId,Date.now());
+  if(result.status==='missing'){message('这次删除已不再可撤销，请检查资料列表。');render();return;}
+  if(persist(result.state)){message(result.status==='expired'?result.expiredCount+' 条资料的撤销时间已结束，无法恢复。':result.count?'已恢复 '+result.count+' 条资料。':'这些资料已在列表中。',result.status==='restored');render();}
+}
+retryButton.addEventListener('click',load);
+window.addEventListener('storage',event=>{if(event.key===STORAGE_KEY||event.key===null){load();}});
+setInterval(()=>{if(!storageReady)return;const due=Core.expire(state,Date.now());if(due.count){try{const expired=Core.expire(readStored(),Date.now());state=expired.state;if(expired.count){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(error){}message(expired.count+' 条资料的撤销时间已结束，无法恢复。');}renderList();}catch(error){storageReady=false;retryButton.hidden=false;message('无法读取已保存的资料，请重试。');renderList();}}renderUndo();},250);
+load();
+</script>
+</body>
+</html>

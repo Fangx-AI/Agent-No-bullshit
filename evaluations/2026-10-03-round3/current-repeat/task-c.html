@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>课程资料库</title>
+<style>
+:root{font-family:Inter,"Microsoft YaHei",system-ui,sans-serif;color:#303348;background:#f5f5f8;font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #ab9adf;outline-offset:3px}header{height:80px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e4e3eb;background:#fff}.brand{font-size:20px;font-weight:800}.brand span{color:#8066bb;margin-right:9px}.header-tag{font-size:12px;color:#9290a1}main{max-width:1050px;padding:43px 26px;margin:auto}.intro{display:flex;align-items:end;justify-content:space-between;margin-bottom:27px}h1{font-size:32px;letter-spacing:-1px;margin:0 0 10px}.subtitle{font-size:14px;color:#8a8697;margin:0}.count{font-size:12px;color:#8c869c}.add-card{border:1px solid #e0dce9;border-radius:12px;background:#fff;padding:22px;display:flex;align-items:end;gap:13px;margin-bottom:25px}.add-field{flex:1}label{font-size:13px;font-weight:700;display:block;margin-bottom:10px}input[type="text"],input[type="search"]{border:1px solid #dcd9e5;background:#fff;border-radius:7px;padding:12px 14px;width:100%;font-size:14px;color:#4a405f}.primary{border:0;border-radius:7px;background:#7257ac;color:white;font-weight:700;padding:13px 23px;white-space:nowrap}.primary:hover{background:#634998}.list-card{border:1px solid #e0dce9;border-radius:12px;overflow:hidden;background:#fff}.list-toolbar{padding:19px 22px;display:flex;gap:15px;align-items:center;border-bottom:1px solid #ece9f0}.search{max-width:340px;position:relative;flex:1}.delete{margin-left:auto;border:1px solid #e1cdd6;background:#fff;color:#ab556b;border-radius:7px;padding:10px 14px;font-size:13px;white-space:nowrap}.delete:hover:not(:disabled){background:#fcf5f8}button:disabled{opacity:.45;cursor:not-allowed}.table-head{display:grid;grid-template-columns:35px 1fr 160px;align-items:center;padding:13px 22px;background:#faf9fc;font-size:12px;color:#958ba4;border-bottom:1px solid #eeeaf3}.select-all{margin:0;display:flex;align-items:center;gap:8px;grid-column:1/3;font-size:12px;color:#958ba4;font-weight:400}input[type="checkbox"]{accent-color:#775bad;width:16px;height:16px;cursor:pointer;margin:0;flex:none}.row{display:grid;grid-template-columns:35px 1fr 160px;align-items:center;padding:19px 22px;border-bottom:1px solid #eeeaf3;font-size:14px;gap:0}.row:last-child{border-bottom:0}.row.selected{background:#f5f1fc}.row label{margin:0;font-size:14px;font-weight:500;line-height:1.6;overflow-wrap:anywhere;cursor:pointer}.row time{font-size:12px;color:#97909f}.empty{text-align:center;padding:52px 20px;color:#968da4;font-size:14px;line-height:1.8}.empty strong{display:block;color:#62566e;font-size:17px;margin:10px 0}.empty-symbol{font-size:31px;color:#a18dbd}.list-footer{padding:15px 22px;display:flex;justify-content:space-between;font-size:12px;color:#a399ad;background:#fdfcfe;border-top:1px solid #eeeaf3}.status{font-size:13px;line-height:1.8;color:#66836d;min-height:29px;margin:12px 0}.status.error{color:#b14e60}.undo-card{border:1px solid #cfbfe9;background:#f5f0ff;border-radius:9px;margin-top:12px;padding:14px 17px;display:flex;align-items:center;gap:16px}.undo-copy{flex:1;font-size:13px;color:#665082;line-height:1.7}.undo-copy small{display:block;color:#92809f;font-size:12px}.undo-button{border:0;color:#71519f;background:#e6daf8;padding:9px 15px;border-radius:6px;font-weight:700}.retry{border:1px solid #d8b1bc;color:#ad536b;background:#fff;padding:6px 13px;border-radius:5px;font-size:12px;vertical-align:middle;margin-left:10px}[hidden]{display:none!important}@media(max-width:650px){header{height:65px;padding:0 22px}.header-tag{display:none}main{padding:31px 18px}.intro{display:block}.count{margin-top:12px}h1{font-size:27px}.add-card{padding:17px;flex-wrap:wrap}.add-field{flex-basis:100%}.primary{width:100%}.list-toolbar{padding:16px;flex-wrap:wrap;gap:10px}.search{max-width:none;flex-basis:100%}.delete{margin-left:0}.table-head,.row{padding-left:16px;padding-right:16px;grid-template-columns:30px 1fr}.table-head>span,.row time{display:none}.list-footer{padding:14px 16px;gap:12px;line-height:1.6}.undo-card{padding:13px;gap:10px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><span>▣</span>课程资料库</div><span class="header-tag">把学习资料放在一起</span></header>
+<main>
+<div class="intro"><div><h1>每一份资料，都有位置。</h1><p class="subtitle">新增、查找和整理你的课程资料。</p></div><div class="count" id="total">0 份资料</div></div>
+<form class="add-card" id="add-form"><div class="add-field"><label for="resource-name">资料名</label><input type="text" id="resource-name" placeholder="例如：第一章 · 课程讲义" maxlength="80" required></div><button class="primary" id="add-button" type="submit">＋ 新增资料</button></form>
+<section class="list-card"><div class="list-toolbar"><div class="search"><input type="search" id="search" placeholder="搜索资料名" aria-label="搜索资料名"></div><button class="delete" id="delete" type="button" disabled>删除所选 <span id="selected-count">0</span> 项</button></div><div class="table-head"><label class="select-all"><input type="checkbox" id="select-all">全选当前结果</label><span>添加时间</span></div><div id="rows"></div><div class="list-footer"><span id="visible-count">共 0 项</span><span>删除后 30 秒内可撤销</span></div></section>
+<div class="status" role="status" aria-live="polite"><span id="status"></span><button class="retry" id="retry" type="button" hidden>重试读取</button></div>
+<section id="undo-list" aria-label="可撤销的删除"></section>
+</main>
+<script>
+'use strict';
+// PURE_START
+const UNDO_WINDOW=30000;
+function emptyState() { return {version:1,nextOrder:1,items:[],pending:[]}; }
+function expiredState(state,now) { return {...state,pending:state.pending.filter(batch=>batch.expiresAt>now)}; }
+function addResource(state,name,id,now) {
+  const trimmed=name.trim(); if(!trimmed || trimmed.length>80) throw new Error('invalid name');
+  return {...state,nextOrder:state.nextOrder+1,items:[...state.items,{id,name:trimmed,createdAt:now,order:state.nextOrder}]};
+}
+function deleteResources(state,ids,id,now) {
+  const active=expiredState(state,now), wanted=new Set(ids), removed=active.items.filter(item=>wanted.has(item.id));
+  if(!removed.length) return {state:active,count:0};
+  return {state:{...active,items:active.items.filter(item=>!wanted.has(item.id)),pending:[...active.pending,{id,items:removed,expiresAt:now+UNDO_WINDOW}]},count:removed.length};
+}
+function restoreResources(state,batchId,now) {
+  const active=expiredState(state,now), batch=active.pending.find(entry=>entry.id===batchId);
+  if(!batch) return {state:active,count:0,expired:true};
+  const existing=new Set(active.items.map(item=>item.id)), restored=batch.items.filter(item=>!existing.has(item.id));
+  return {state:{...active,items:[...active.items,...restored].sort((a,b)=>a.order-b.order),pending:active.pending.filter(entry=>entry.id!==batchId)},count:restored.length,expired:false};
+}
+function matches(items,query) { const term=query.trim().toLocaleLowerCase(); return items.filter(item=>item.name.toLocaleLowerCase().includes(term)); }
+function validStoredState(value) {
+  const itemValid=item=>item && typeof item.id==='string' && typeof item.name==='string' && item.name.trim().length>0 && item.name.length<=80 && Number.isFinite(item.createdAt) && Number.isSafeInteger(item.order) && item.order>0;
+  if(!value || value.version!==1 || !Number.isSafeInteger(value.nextOrder) || value.nextOrder<1 || !Array.isArray(value.items) || !Array.isArray(value.pending)) return false;
+  if(!value.items.every(itemValid) || !value.pending.every(batch=>batch && typeof batch.id==='string' && Number.isFinite(batch.expiresAt) && Array.isArray(batch.items) && batch.items.length>0 && batch.items.every(itemValid))) return false;
+  const all=[...value.items,...value.pending.flatMap(batch=>batch.items)];
+  return new Set(all.map(item=>item.id)).size===all.length && new Set(value.pending.map(batch=>batch.id)).size===value.pending.length && all.every(item=>item.order<value.nextOrder);
+}
+// PURE_END
+const STORAGE_KEY='course-resource-library-repeat-v1';
+const rows=document.getElementById('rows'), search=document.getElementById('search'), nameInput=document.getElementById('resource-name');
+const statusText=document.getElementById('status'), retry=document.getElementById('retry'), statusBox=statusText.parentElement;
+const deleteButton=document.getElementById('delete'), selectAll=document.getElementById('select-all'), undoList=document.getElementById('undo-list');
+let state=emptyState(), ready=false, selected=new Set();
+function id() { return globalThis.crypto && crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36)+'-'+Math.random().toString(36).slice(2); }
+function message(text,error=false) { statusText.textContent=text; statusBox.classList.toggle('error',error); }
+function persist(next) {
+  try { localStorage.setItem(STORAGE_KEY,JSON.stringify(next)); state=next; return true; }
+  catch(_) { message('保存未成功，本次操作未完成。请检查浏览器存储后重试。',true); return false; }
+}
+function load() {
+  try {
+    const raw=localStorage.getItem(STORAGE_KEY), loaded=raw===null ? emptyState() : JSON.parse(raw);
+    if(!validStoredState(loaded)) throw new Error('invalid stored state');
+    state=expiredState(loaded,Date.now()); ready=true; retry.hidden=true;
+    if(state.pending.length!==loaded.pending.length) { try {localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(_){} }
+    selected.clear(); message(raw===null?'新增第一份资料，保存在当前浏览器。':'已读取当前浏览器的资料。'); render();
+  } catch(_) {
+    ready=false; retry.hidden=false; message('资料读取未成功，点击重试读取后再操作。',true); render();
+  }
+}
+function renderSelection() {
+  const visible=matches(state.items,search.value), count=selected.size;
+  document.getElementById('selected-count').textContent=count;
+  deleteButton.disabled=!ready || count===0; selectAll.disabled=!ready || visible.length===0;
+  const checkedCount=visible.filter(item=>selected.has(item.id)).length;
+  selectAll.checked=visible.length>0 && checkedCount===visible.length; selectAll.indeterminate=checkedCount>0 && checkedCount<visible.length;
+}
+function renderRows() {
+  rows.replaceChildren();
+  const visible=ready ? matches(state.items,search.value) : [];
+  document.getElementById('total').textContent=ready ? state.items.length+' 份资料' : '暂未读取';
+  document.getElementById('visible-count').textContent=search.value.trim() ? '找到 '+visible.length+' 项 / 共 '+state.items.length+' 项' : '共 '+state.items.length+' 项';
+  if(!visible.length) {
+    const empty=document.createElement('div'); empty.className='empty';
+    const symbol=document.createElement('div'); symbol.className='empty-symbol'; symbol.textContent='▤';
+    const title=document.createElement('strong'); title.textContent=!ready ? '暂时无法读取资料' : state.items.length ? '没有找到匹配资料' : '资料库还是空的';
+    const help=document.createElement('div'); help.textContent=!ready ? '请点击下方的重试读取。' : state.items.length ? '换个关键词，或清空搜索查看全部。' : '在上方填写资料名，添加你的第一份资料。';
+    empty.append(symbol,title,help); rows.append(empty);
+  }
+  visible.forEach(item=>{
+    const row=document.createElement('div'); row.className='row'; row.classList.toggle('selected',selected.has(item.id));
+    const checkbox=document.createElement('input'); checkbox.type='checkbox'; checkbox.id='item-'+item.id; checkbox.checked=selected.has(item.id); checkbox.setAttribute('aria-label','选择 '+item.name);
+    const label=document.createElement('label'); label.htmlFor=checkbox.id; label.textContent=item.name;
+    const time=document.createElement('time'); const date=new Date(item.createdAt); time.dateTime=date.toISOString(); time.textContent=date.toLocaleDateString('zh-CN');
+    checkbox.addEventListener('change',()=>{if(checkbox.checked)selected.add(item.id);else selected.delete(item.id);row.classList.toggle('selected',checkbox.checked);renderSelection();});
+    row.append(checkbox,label,time); rows.append(row);
+  });
+  renderSelection();
+}
+function renderUndo() {
+  undoList.replaceChildren();
+  state.pending.filter(batch=>batch.expiresAt>Date.now()).forEach(batch=>{
+    const card=document.createElement('div'); card.className='undo-card';
+    const copy=document.createElement('div'); copy.className='undo-copy'; copy.textContent='已删除 '+batch.items.length+' 份资料';
+    const countdown=document.createElement('small'); countdown.dataset.deadline=String(batch.expiresAt); copy.append(countdown);
+    const button=document.createElement('button'); button.type='button'; button.className='undo-button'; button.textContent='撤销'; button.setAttribute('aria-label','撤销删除 '+batch.items.length+' 份资料');
+    button.addEventListener('click',()=>undo(batch.id)); card.append(copy,button); undoList.append(card);
+  });
+  updateCountdowns();
+}
+function updateCountdowns() {
+  undoList.querySelectorAll('[data-deadline]').forEach(element=>{element.textContent=Math.max(0,Math.ceil((Number(element.dataset.deadline)-Date.now())/1000))+' 秒内可撤销，超时无法恢复';});
+}
+function render() { document.getElementById('add-button').disabled=!ready; nameInput.disabled=!ready; renderRows(); renderUndo(); }
+function expire() {
+  const next=expiredState(state,Date.now()), expired=state.pending.filter(batch=>!next.pending.some(entry=>entry.id===batch.id));
+  if(!expired.length) {updateCountdowns();return;}
+  state=next;
+  try {localStorage.setItem(STORAGE_KEY,JSON.stringify(next));} catch(_) {}
+  message(expired.reduce((sum,batch)=>sum+batch.items.length,0)+' 份已删除资料的撤销时间已到，无法恢复。'); renderUndo();
+}
+function undo(batchId) {
+  if(!ready) return;
+  const restored=restoreResources(state,batchId,Date.now());
+  if(restored.expired) {state=restored.state;message('撤销时间已到，这批资料无法恢复。');renderUndo();return;}
+  if(!persist(restored.state)) return;
+  message('已恢复 '+restored.count+' 份资料。'); render();
+}
+document.getElementById('add-form').addEventListener('submit',event=>{
+  event.preventDefault(); if(!ready)return; const name=nameInput.value.trim();
+  if(!name) {message('请填写资料名。',true);nameInput.focus();return;}
+  if(name.length>80) {message('资料名最多 80 个字，请缩短后重试。',true);nameInput.focus();return;}
+  const next=addResource(expiredState(state,Date.now()),name,id(),Date.now());
+  if(!persist(next))return; nameInput.value='';message('已新增“'+name+'”，保存在当前浏览器。');render();nameInput.focus();
+});
+search.addEventListener('input',renderRows);
+selectAll.addEventListener('change',()=>{const visible=matches(state.items,search.value);visible.forEach(item=>{if(selectAll.checked)selected.add(item.id);else selected.delete(item.id);});renderRows();});
+deleteButton.addEventListener('click',()=>{
+  if(!ready || !selected.size)return;
+  const deletion=deleteResources(state,[...selected],id(),Date.now());
+  if(!deletion.count) {selected.clear();renderRows();return;}
+  if(!persist(deletion.state))return;
+  selected.clear();message('已删除 '+deletion.count+' 份资料，30 秒内可撤销。');render();
+});
+retry.addEventListener('click',load);
+window.addEventListener('storage',event=>{if(event.key===STORAGE_KEY || event.key===null)load();});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden && ready)expire();});
+setInterval(()=>{if(ready)expire();},250);
+load();
+</script>
+</body>
+</html>

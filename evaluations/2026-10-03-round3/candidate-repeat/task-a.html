@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSON 整理台</title>
+  <style>
+    :root{color-scheme:light;--ink:#182b31;--muted:#63767b;--line:#d6e1e1;--brand:#087b72;--soft:#e7f4f0;--red:#a73236}
+    *{box-sizing:border-box}body{margin:0;background:#f4f7f4;color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}button,textarea,select{font:inherit}button,select{cursor:pointer}button:disabled{cursor:default;opacity:.45}button:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #78c9bc;outline-offset:3px}
+    .shell{max-width:1320px;margin:auto;padding:40px 36px 28px}.brand{display:flex;gap:10px;align-items:center;font-size:14px;font-weight:750;letter-spacing:.08em}.mark{width:31px;height:31px;background:var(--brand);border-radius:9px;color:white;display:grid;place-items:center;font:700 15px monospace}.intro{display:flex;justify-content:space-between;align-items:end;gap:24px;margin:36px 0 26px}h1{font-size:clamp(30px,4vw,43px);letter-spacing:-.04em;line-height:1.2;margin:0 0 10px}.intro p{margin:0;color:var(--muted)}.hint{font-size:13px;white-space:nowrap;color:var(--muted)}kbd{font:12px system-ui;border:1px solid #cedad8;background:#fff;padding:3px 6px;border-radius:4px}
+    .workspace{display:grid;grid-template-columns:1fr 1fr;background:white;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 20px 55px #22453808}.pane+.pane{border-left:1px solid var(--line)}.pane-head{height:65px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid var(--line)}.pane-head label{font-weight:700;font-size:15px}.meta{color:var(--muted);font-size:12px}.textarea-wrap{padding:20px 24px}textarea{display:block;resize:vertical;width:100%;height:440px;min-height:200px;background:transparent;border:0;color:#223c42;padding:0;line-height:1.75;font:14px/1.75 ui-monospace,SFMono-Regular,Consolas,"Microsoft YaHei",monospace;tab-size:2}textarea::placeholder{color:#8ea0a0}textarea:focus{outline:none}.textarea-wrap:focus-within{box-shadow:inset 0 0 0 2px #6fbbae}.result-pane{background:#f9fcfb}.pane-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);min-height:72px;padding:14px 24px}.actions{display:flex;gap:10px}.button{border:1px solid var(--line);padding:9px 17px;border-radius:9px;font-size:14px;font-weight:650;color:var(--ink);background:white}.button.primary{border-color:var(--brand);background:var(--brand);color:white}.button.ghost{background:transparent}.indent{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}.indent select{border:1px solid var(--line);border-radius:7px;color:var(--ink);padding:6px 7px;background:white;font-size:13px}.status{margin:16px 0 0;min-height:28px;font-size:14px;color:var(--muted);padding:8px 0}.status.error{color:var(--red)}.status.success{color:var(--brand)}.bottom{margin-top:28px;display:flex;justify-content:space-between;font-size:12px;color:#7b8e8c}.dot{display:inline-block;width:7px;height:7px;border-radius:100%;background:#65a893;margin-right:7px}
+    @media(max-width:760px){.shell{padding:24px 16px}.intro{margin:28px 0 22px;display:block}.hint{margin-top:16px}.workspace{grid-template-columns:1fr}.pane+.pane{border-left:0;border-top:1px solid var(--line)}textarea{height:250px}.pane-head,.pane-foot{padding-left:18px;padding-right:18px}.textarea-wrap{padding:18px}.pane-foot{flex-wrap:wrap}.bottom{margin-top:18px}.intro p{font-size:14px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="brand"><span class="mark" aria-hidden="true">{ }</span> JSON 整理台</div>
+    <header class="intro">
+      <div><h1>JSON 格式化</h1></div>
+      <div class="hint"><kbd>Ctrl</kbd> + <kbd>Enter</kbd> 格式化</div>
+    </header>
+    <section class="workspace" aria-label="JSON 编辑区">
+      <div class="pane">
+        <div class="pane-head"><label for="source">原始 JSON</label><span class="meta" id="input-count">0 字符</span></div>
+        <div class="textarea-wrap"><textarea id="source" spellcheck="false" autocomplete="off" aria-describedby="status" placeholder='{"课程":"创作入门","章节":["开始","练习"],"已完成":false}'></textarea></div>
+        <div class="pane-foot">
+          <div class="actions"><button class="button primary" id="format" type="button">格式化</button><button class="button ghost" id="clear" type="button">清空</button></div>
+          <label class="indent" for="indent">缩进<select id="indent"><option value="2">2 空格</option><option value="4">4 空格</option><option value="tab">Tab</option></select></label>
+        </div>
+      </div>
+      <div class="pane result-pane">
+        <div class="pane-head"><label for="result">格式化结果</label><span class="meta" id="result-count">等待输入</span></div>
+        <div class="textarea-wrap"><textarea id="result" readonly spellcheck="false" placeholder="结果会显示在这里。"></textarea></div>
+        <div class="pane-foot"><span class="meta" id="result-note">格式化后即可复制</span><button class="button" id="copy" disabled type="button">复制结果</button></div>
+      </div>
+    </section>
+    <p class="status" id="status" role="status" aria-live="polite">粘贴 JSON 后点击“格式化”。</p>
+    <footer class="bottom"><span><span class="dot"></span>在当前页面处理</span><span>JSON / FORMAT</span></footer>
+  </main>
+  <script>
+    function formatJson(text, indent) {
+      if (!text.trim()) return {ok:false, empty:true, message:'先粘贴需要格式化的 JSON。'};
+      try {
+        const parsed = JSON.parse(text);
+        return {ok:true, text:JSON.stringify(parsed, null, indent === 'tab' ? '\t' : Number(indent))};
+      } catch (error) {
+        const message = String(error.message);
+        const match = message.match(/position\s+(\d+)/i);
+        const position = match ? Math.min(Number(match[1]), text.length) : null;
+        let location = '';
+        if (position !== null) {
+          const before = text.slice(0, position);
+          const line = before.split('\n').length;
+          const column = position - before.lastIndexOf('\n');
+          location = '第 ' + line + ' 行，第 ' + column + ' 列附近：';
+        } else if (/end of JSON/i.test(message)) {
+          location = '内容末尾：';
+        }
+        return {ok:false, position, message:location + 'JSON 格式有误。检查双引号、逗号和括号后，再点“格式化”。'};
+      }
+    }
+    // 界面逻辑
+    const source = document.getElementById('source');
+    const result = document.getElementById('result');
+    const indent = document.getElementById('indent');
+    const copy = document.getElementById('copy');
+    const status = document.getElementById('status');
+    let formattedSource = null;
+    let revision = 0;
+    function showStatus(message, kind) {status.textContent = message; status.className = 'status' + (kind ? ' ' + kind : '');}
+    function invalidate() {
+      revision++;
+      formattedSource = null;
+      result.value = '';
+      copy.disabled = true;
+      copy.textContent = '复制结果';
+      document.getElementById('input-count').textContent = source.value.length.toLocaleString('zh-CN') + ' 字符';
+      document.getElementById('result-count').textContent = source.value.trim() ? '等待格式化' : '等待输入';
+      document.getElementById('result-note').textContent = '格式化后即可复制';
+      showStatus(source.value.trim() ? '内容已修改，点击“格式化”生成结果。' : '粘贴 JSON 后点击“格式化”。');
+    }
+    function format() {
+      revision++;
+      const outcome = formatJson(source.value, indent.value);
+      if (!outcome.ok) {
+        result.value = '';
+        formattedSource = null;
+        copy.disabled = true;
+        document.getElementById('result-count').textContent = '未生成结果';
+        showStatus(outcome.message, outcome.empty ? '' : 'error');
+        source.focus();
+        if (outcome.position !== null && outcome.position !== undefined) source.setSelectionRange(outcome.position, Math.min(outcome.position + 1, source.value.length));
+        return;
+      }
+      result.value = outcome.text;
+      formattedSource = source.value;
+      copy.disabled = false;
+      copy.textContent = '复制结果';
+      document.getElementById('result-count').textContent = outcome.text.split('\n').length + ' 行';
+      document.getElementById('result-note').textContent = outcome.text.length.toLocaleString('zh-CN') + ' 字符';
+      showStatus('格式化完成。', 'success');
+    }
+    source.addEventListener('input', invalidate);
+    indent.addEventListener('change', () => {invalidate(); if (source.value.trim()) showStatus('缩进已修改，重新格式化即可更新结果。');});
+    document.getElementById('format').addEventListener('click', format);
+    document.getElementById('clear').addEventListener('click', () => {source.value = ''; invalidate(); source.focus(); showStatus('已清空。');});
+    source.addEventListener('keydown', event => {if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {event.preventDefault(); format();}});
+    copy.addEventListener('click', async () => {
+      if (formattedSource !== source.value || !result.value) return;
+      const currentRevision = revision;
+      const value = result.value;
+      copy.disabled = true;
+      copy.textContent = '复制中…';
+      try {
+        if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(value);
+        else {result.focus(); result.select(); if (!document.execCommand('copy')) throw new Error('copy failed');}
+        if (currentRevision === revision) showStatus('结果已复制。', 'success');
+      } catch (error) {
+        if (currentRevision === revision) {result.focus(); result.select(); showStatus('复制未成功。结果已选中，可按 Ctrl+C（Mac 使用 ⌘C）复制。', 'error');}
+      } finally {
+        if (currentRevision === revision) {copy.disabled = false; copy.textContent = '复制结果';}
+      }
+    });
+  </script>
+</body>
+</html>

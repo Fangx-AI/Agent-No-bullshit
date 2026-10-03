@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>课间 · 课程资料</title>
+  <style>
+    :root{color-scheme:light;--ink:#252c3b;--muted:#7b8290;--line:#e2e6ed;--brand:#4c5dbc;--soft:#eef1ff;--red:#b13e46}*{box-sizing:border-box}body{margin:0;background:#f6f7fa;color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:default}button:focus-visible,input:focus-visible{outline:3px solid #a1b0f5;outline-offset:3px}input[type=checkbox]{accent-color:var(--brand);width:17px;height:17px;cursor:pointer}.shell{max-width:1050px;margin:auto;padding:32px 32px 42px}.top{display:flex;align-items:center;justify-content:space-between;gap:15px;padding-bottom:24px;border-bottom:1px solid var(--line)}.brand{font-weight:750;font-size:17px;display:flex;align-items:center;gap:9px}.mark{background:var(--brand);border-radius:9px;width:29px;height:29px;display:grid;place-items:center;color:white;font-size:18px}.saved{font-size:12px;color:var(--muted)}.saved:before{content:"";display:inline-block;width:6px;height:6px;background:#7ca997;border-radius:50%;margin:0 7px 1px 0}.intro{margin:33px 0 25px;display:flex;align-items:end;justify-content:space-between;gap:16px}h1{font-size:34px;line-height:1.2;letter-spacing:-.035em;margin:0 0 9px}.intro p{margin:0;color:var(--muted);font-size:14px}.total{font-size:12px;color:var(--muted);text-align:right}.total strong{font-size:31px;display:block;font-weight:500;color:var(--ink);line-height:1.25}.add-card{border:1px solid var(--line);background:white;border-radius:14px;padding:20px 23px;margin-bottom:25px}.add-card label{display:block;font-size:14px;font-weight:650;margin-bottom:9px}.add-row{display:flex;gap:10px}.add-row input{flex:1;min-width:0;border:1px solid #d9deea;border-radius:8px;padding:11px 13px;background:#fcfcff;color:var(--ink)}.button{border:1px solid #d6dbe7;border-radius:8px;background:white;color:var(--ink);font-weight:650;font-size:13px;padding:10px 16px;white-space:nowrap}.button.primary{background:var(--brand);border-color:var(--brand);color:white}.button.danger{color:var(--red);border-color:#e6cdd0}.manager{background:white;border:1px solid var(--line);border-radius:14px;overflow:hidden}.toolbar{padding:18px 22px;display:flex;gap:14px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.search{position:relative;max-width:330px;flex:1;min-width:140px}.search span{position:absolute;left:12px;top:8px;color:#8792a5;font-size:19px;pointer-events:none}.search input{width:100%;border:1px solid #e2e6ee;border-radius:8px;padding:9px 12px 9px 37px;background:#f9fafc;font-size:13px}.selection-actions{display:flex;gap:13px;align-items:center}.selection-info{font-size:12px;color:var(--muted);max-width:210px}.selection-info strong{color:var(--brand);font-weight:650}.selection-actions small{display:block;font-size:11px;color:var(--muted);line-height:1.5}.list-heading{padding:13px 24px;display:flex;align-items:center;gap:15px;background:#fafbfe;font-size:12px;color:var(--muted)}.list-heading label{display:flex;align-items:center;gap:14px;cursor:pointer}.list{margin:0;padding:0;list-style:none}.row{display:flex;align-items:center;gap:15px;padding:17px 24px;border-top:1px solid #eff1f6}.row:first-child{border-top:0}.row:has(input:checked){background:#f7f8ff}.document-icon{width:37px;height:41px;border-radius:8px;background:var(--soft);color:var(--brand);display:grid;place-items:center;font-size:20px;flex-shrink:0}.row label{display:flex;align-items:center;gap:14px;flex:1;cursor:pointer;min-width:0}.item-content{min-width:0;flex:1}.name{overflow-wrap:anywhere;display:block;font-weight:550;font-size:14px}.created{display:block;font-size:11px;color:var(--muted);margin-top:3px}.index{color:#c1c7d3;font:12px ui-monospace,Consolas,monospace}.empty{text-align:center;padding:61px 20px 64px}.empty .empty-icon{width:52px;height:58px;display:grid;place-items:center;margin:0 auto 16px;background:#f1f3fb;color:#8a97c9;border-radius:12px;font-size:28px}.empty strong{font-size:16px;font-weight:650}.empty p{font-size:13px;color:var(--muted);margin:5px 0 0}.list-footer{border-top:1px solid var(--line);padding:13px 24px;color:var(--muted);font-size:12px}.undo-area{display:grid;gap:10px;margin-top:16px}.undo{display:flex;align-items:center;gap:14px;justify-content:space-between;border:1px solid #cfd8f4;background:#eef2ff;border-radius:11px;padding:13px 18px;font-size:13px}.undo-text{flex:1}.undo-time{font-size:12px;color:#65729a;font-variant-numeric:tabular-nums;min-width:38px;text-align:right}.undo .button{background:white;color:var(--brand);border-color:#c6d0f0;padding:7px 16px}.status-row{display:flex;align-items:center;gap:12px;margin-top:14px;min-height:29px}.status{margin:0;font-size:13px;color:var(--muted)}.status.error{color:var(--red)}.retry{border:0;background:transparent;text-decoration:underline;color:var(--brand);padding:0;font-size:13px}.retry[hidden],.empty[hidden]{display:none}.footer{margin-top:27px;font-size:11px;color:#a0a6b4;letter-spacing:.08em}@media(max-width:650px){.shell{padding:22px 16px}.saved{font-size:11px}.intro{margin-top:27px}h1{font-size:30px}.add-card{padding:18px}.add-row{flex-wrap:wrap}.add-row input{flex-basis:100%}.add-row .button{width:100%}.toolbar{padding:16px;flex-wrap:wrap}.search{max-width:none;flex-basis:100%}.selection-actions{justify-content:space-between;width:100%}.selection-info{max-width:70%}.row,.list-heading{padding-left:16px;padding-right:16px;gap:11px}.row label{gap:10px}.index{display:none}.undo{padding:12px;gap:9px}.undo .button{padding:7px 11px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <nav class="top" aria-label="页面标识"><div class="brand"><span class="mark" aria-hidden="true">▤</span>课间</div><span class="saved" id="storage-label">当前浏览器 · 自动保存</span></nav>
+    <header class="intro"><div><h1>课程资料</h1></div><div class="total"><strong id="total">0</strong>份资料</div></header>
+    <form class="add-card" id="add-form"><label for="new-name">新增资料</label><div class="add-row"><input id="new-name" type="text" maxlength="120" autocomplete="off" placeholder="例如：第 1 课 · 入门讲义" required><button id="add" class="button primary" type="submit">＋ 新增资料</button></div></form>
+    <section class="manager" aria-label="资料列表">
+      <div class="toolbar">
+        <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索资料名" aria-label="搜索资料名" autocomplete="off"></label>
+        <div class="selection-actions"><div class="selection-info" id="selection-info">尚未选择资料</div><button class="button danger" id="delete" type="button" disabled>删除所选</button></div>
+      </div>
+      <div class="list-heading"><label><input id="select-all" type="checkbox" disabled><span id="select-label">选择全部</span></label></div>
+      <ul class="list" id="list"></ul>
+      <div class="empty" id="empty"><div class="empty-icon" aria-hidden="true">▤</div><strong id="empty-title">还没有资料</strong><p id="empty-description">在上方输入资料名，开始整理。</p></div>
+      <div class="list-footer" id="list-footer">共 0 份资料</div>
+    </section>
+    <section class="undo-area" id="undo-area" aria-label="可撤销的删除"></section>
+    <div class="status-row"><p class="status" id="status" role="status" aria-live="polite"></p><button id="retry" class="retry" type="button" hidden>重试</button></div>
+    <footer class="footer">课间 / COURSE LIBRARY</footer>
+  </main>
+  <script>
+    function emptyState() {return {version:1,items:[],undo:[]};}
+    function validResource(item) {return !!item && typeof item.id === 'string' && item.id.length > 0 && typeof item.name === 'string' && item.name.trim().length > 0 && Number.isFinite(item.createdAt);}
+    function parseSavedState(raw) {
+      if (raw === null) return emptyState();
+      const value = JSON.parse(raw);
+      if (!value || value.version !== 1 || !Array.isArray(value.items) || !value.items.every(validResource) || !Array.isArray(value.undo) || !value.undo.every(batch => batch && typeof batch.id === 'string' && Number.isFinite(batch.expiresAt) && Array.isArray(batch.items) && batch.items.every(validResource))) throw new Error('invalid stored data');
+      return {version:1,items:value.items.map(item => ({id:item.id,name:item.name,createdAt:item.createdAt})),undo:value.undo.map(batch => ({id:batch.id,expiresAt:batch.expiresAt,items:batch.items.map(item => ({id:item.id,name:item.name,createdAt:item.createdAt}))}))};
+    }
+    function pruneState(state, now) {return {version:1,items:state.items.slice(),undo:state.undo.filter(batch => batch.expiresAt > now)};}
+    function addResource(state, name, id, now) {
+      const trimmed = name.trim();
+      if (!trimmed || trimmed.length > 120) throw new Error('invalid name');
+      const next = pruneState(state,now);
+      next.items.push({id,name:trimmed,createdAt:now});
+      return {state:next,added:1};
+    }
+    function deleteResources(state, ids, batchId, now) {
+      const selected = new Set(ids);
+      const next = pruneState(state,now);
+      const removed = next.items.filter(item => selected.has(item.id));
+      next.items = next.items.filter(item => !selected.has(item.id));
+      if (removed.length) next.undo.push({id:batchId,expiresAt:now + 30000,items:removed});
+      return {state:next,removed:removed.length};
+    }
+    function restoreBatch(state, batchId, now) {
+      const next = pruneState(state,now);
+      const batch = next.undo.find(value => value.id === batchId);
+      if (!batch) return {state:next,ok:false,restored:0};
+      const existing = new Set(next.items.map(item => item.id));
+      const restored = batch.items.filter(item => !existing.has(item.id));
+      next.items = next.items.concat(restored).sort((a,b) => a.createdAt - b.createdAt || a.id.localeCompare(b.id));
+      next.undo = next.undo.filter(value => value.id !== batchId);
+      return {state:next,ok:true,restored:restored.length};
+    }
+    // 界面逻辑
+    const STORAGE_KEY = 'kejian-course-library-v1';
+    const list = document.getElementById('list');
+    const search = document.getElementById('search');
+    const newName = document.getElementById('new-name');
+    const selectAll = document.getElementById('select-all');
+    const deleteButton = document.getElementById('delete');
+    const undoArea = document.getElementById('undo-area');
+    const status = document.getElementById('status');
+    const retry = document.getElementById('retry');
+    let state = emptyState();
+    let ready = false;
+    let selected = new Set();
+    function announce(message, error) {status.textContent = message; status.className = 'status' + (error ? ' error' : '');}
+    function makeId() {return globalThis.crypto && crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + '-' + Math.random().toString(36).slice(2);}
+    function readSaved() {return parseSavedState(localStorage.getItem(STORAGE_KEY));}
+    function writeSaved(next) {localStorage.setItem(STORAGE_KEY,JSON.stringify(next));}
+    function storageFailure(error, action) {
+      let message;
+      if (error.name === 'QuotaExceededError') message = '当前浏览器的存储空间不足。释放空间后重试。';
+      else if (error.name === 'SecurityError') message = '浏览器未允许保存资料。允许本站存储后重试。';
+      else message = action === 'read' ? '已保存的资料读取失败，请重试。' : '资料保存失败，请重试。';
+      announce(message,true); retry.hidden = false;
+    }
+    function visibleItems() {const query = search.value.trim().toLocaleLowerCase('zh-CN'); return state.items.filter(item => item.name.toLocaleLowerCase('zh-CN').includes(query)).slice().reverse();}
+    function render() {
+      const known = new Set(state.items.map(item => item.id));
+      selected = new Set(Array.from(selected).filter(id => known.has(id)));
+      const items = visibleItems();
+      list.replaceChildren();
+      items.forEach((item,index) => {
+        const row = document.createElement('li'); row.className = 'row';
+        const checkbox = document.createElement('input'); checkbox.type = 'checkbox'; checkbox.checked = selected.has(item.id); checkbox.disabled = !ready; checkbox.setAttribute('aria-label','选择资料：' + item.name);
+        checkbox.addEventListener('change',() => {if (checkbox.checked) selected.add(item.id); else selected.delete(item.id); render(); document.getElementById('resource-' + item.id).focus();});
+        const label = document.createElement('label');
+        const icon = document.createElement('span'); icon.className = 'document-icon'; icon.textContent = '▤'; icon.setAttribute('aria-hidden','true');
+        const content = document.createElement('span'); content.className = 'item-content';
+        const name = document.createElement('span'); name.className = 'name'; name.textContent = item.name;
+        const created = document.createElement('span'); created.className = 'created'; created.textContent = '添加于 ' + new Intl.DateTimeFormat('zh-CN',{year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(item.createdAt));
+        const id = 'resource-' + item.id; checkbox.id = id; label.htmlFor = id;
+        content.append(name,created); label.append(icon,content);
+        const order = document.createElement('span'); order.className = 'index'; order.textContent = String(index + 1).padStart(2,'0');
+        row.append(checkbox,label,order); list.append(row);
+      });
+      document.getElementById('total').textContent = state.items.length;
+      document.getElementById('empty').hidden = items.length > 0;
+      const filtered = search.value.trim().length > 0;
+      document.getElementById('empty-title').textContent = filtered ? '没有找到匹配资料' : '还没有资料';
+      document.getElementById('empty-description').textContent = filtered ? '换一个关键词，或清空搜索。' : '在上方输入资料名，开始整理。';
+      document.getElementById('list-footer').textContent = filtered ? '找到 ' + items.length + ' 份 · 共 ' + state.items.length + ' 份资料' : '共 ' + state.items.length + ' 份资料';
+      document.getElementById('select-label').textContent = filtered ? '选择搜索结果' : '选择全部';
+      const visibleSelected = items.filter(item => selected.has(item.id)).length;
+      selectAll.disabled = !ready || items.length === 0;
+      selectAll.checked = items.length > 0 && visibleSelected === items.length;
+      selectAll.indeterminate = visibleSelected > 0 && visibleSelected < items.length;
+      deleteButton.disabled = !ready || selected.size === 0;
+      const selectionInfo = document.getElementById('selection-info'); selectionInfo.replaceChildren();
+      if (!selected.size) selectionInfo.textContent = '尚未选择资料';
+      else {
+        const text = document.createElement('strong'); text.textContent = '已选 ' + selected.size + ' 项' + (selected.size > visibleSelected ? '（含 ' + (selected.size - visibleSelected) + ' 项未显示）' : '');
+        const consequence = document.createElement('small'); consequence.textContent = '删除后有 30 秒可撤销。'; selectionInfo.append(text,consequence);
+      }
+      newName.disabled = !ready; document.getElementById('add').disabled = !ready;
+      document.getElementById('storage-label').textContent = ready ? '当前浏览器 · 自动保存' : '当前浏览器 · 存储未就绪';
+      renderUndo();
+    }
+    function renderUndo() {
+      undoArea.replaceChildren();
+      state.undo.filter(batch => batch.expiresAt > Date.now()).forEach(batch => {
+        const panel = document.createElement('div'); panel.className = 'undo';
+        const text = document.createElement('span'); text.className = 'undo-text'; text.textContent = '已删除 ' + batch.items.length + ' 项资料';
+        const counter = document.createElement('span'); counter.className = 'undo-time'; counter.dataset.expires = String(batch.expiresAt); counter.textContent = Math.ceil((batch.expiresAt - Date.now()) / 1000) + ' 秒'; counter.setAttribute('aria-label','撤销剩余时间');
+        const button = document.createElement('button'); button.type = 'button'; button.className = 'button'; button.textContent = '撤销'; button.setAttribute('aria-label','撤销删除这 ' + batch.items.length + ' 项资料');
+        button.addEventListener('click',() => {
+          const outcome = mutate((latest,now) => restoreBatch(latest,batch.id,now));
+          if (!outcome) return;
+          announce(outcome.ok ? (outcome.restored ? '已恢复 ' + outcome.restored + ' 项资料。' : '这批资料已经恢复。') : '撤销未成功：这批删除已过期或已处理。',!outcome.ok);
+        });
+        panel.append(text,counter,button); undoArea.append(panel);
+      });
+    }
+    function load() {
+      try {
+        const saved = readSaved(); const next = pruneState(saved,Date.now());
+        if (next.undo.length !== saved.undo.length) writeSaved(next);
+        state = next; ready = true; retry.hidden = true; render(); return true;
+      } catch (error) {ready = false; storageFailure(error,'read'); render(); return false;}
+    }
+    function mutate(transform) {
+      let latest;
+      try {latest = readSaved();} catch (error) {ready = false; storageFailure(error,'read'); render(); return null;}
+      const outcome = transform(latest,Date.now());
+      try {writeSaved(outcome.state);} catch (error) {storageFailure(error,'write'); return null;}
+      state = outcome.state; ready = true; retry.hidden = true; render(); return outcome;
+    }
+    document.getElementById('add-form').addEventListener('submit',event => {
+      event.preventDefault();
+      if (!ready) return;
+      const name = newName.value.trim();
+      if (!name) {announce('先填写资料名。',true); newName.focus(); return;}
+      const outcome = mutate((latest,now) => addResource(latest,name,makeId(),now));
+      if (outcome) {newName.value = ''; announce(search.value.trim() && !name.toLocaleLowerCase('zh-CN').includes(search.value.trim().toLocaleLowerCase('zh-CN')) ? '资料已新增，清空搜索可查看。' : '资料已新增。'); newName.focus();}
+    });
+    search.addEventListener('input',render);
+    selectAll.addEventListener('change',() => {visibleItems().forEach(item => {if (selectAll.checked) selected.add(item.id); else selected.delete(item.id);}); render();});
+    deleteButton.addEventListener('click',() => {
+      if (!ready || !selected.size) return;
+      const outcome = mutate((latest,now) => deleteResources(latest,Array.from(selected),makeId(),now));
+      if (!outcome) return;
+      selected.clear(); render();
+      announce(outcome.removed ? '' : '所选资料已不存在，列表已更新。');
+    });
+    retry.addEventListener('click',() => {if (load()) announce('已重新读取资料，可继续操作。');});
+    window.addEventListener('storage',event => {if (event.key === STORAGE_KEY || event.key === null) {if (load()) announce('资料已更新。');}});
+    setInterval(() => {
+      const now = Date.now();
+      const expired = state.undo.filter(batch => batch.expiresAt <= now);
+      if (expired.length) {
+        let saved;
+        try {saved = readSaved();} catch (error) {storageFailure(error,'read'); state = pruneState(state,now); renderUndo(); return;}
+        const expiredInSaved = saved.undo.filter(batch => batch.expiresAt <= now);
+        const next = pruneState(saved,now);
+        try {if (next.undo.length !== saved.undo.length) writeSaved(next);} catch (error) {storageFailure(error,'write'); state = pruneState(state,now); renderUndo(); return;}
+        state = next; render();
+        const count = expiredInSaved.reduce((total,batch) => total + batch.items.length,0);
+        if (count) announce(count + ' 项资料已超过撤销期限。');
+      } else {
+        undoArea.querySelectorAll('[data-expires]').forEach(counter => {counter.textContent = Math.max(0,Math.ceil((Number(counter.dataset.expires) - now) / 1000)) + ' 秒';});
+      }
+    },250);
+    load();
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JSON 格式化工具</title>
+<style>
+:root{color-scheme:light;--ink:#172333;--muted:#637184;--line:#dce3e9;--accent:#215c52}*{box-sizing:border-box}body{margin:0;background:#f3f6f7;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}button,select,textarea{font:inherit}button,select{border:1px solid var(--line);border-radius:9px;padding:10px 15px;background:#fff;color:var(--ink);cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}button:hover:not(:disabled){background:#edf2f2}button.primary{background:var(--accent);border-color:var(--accent);color:#fff}button.primary:hover{background:#18483f}button:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #97c9be;outline-offset:3px}main{max-width:1160px;margin:0 auto;padding:50px 28px 30px}.eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--accent)}h1{font-size:32px;letter-spacing:-.03em;margin:10px 0 12px}header p{margin:0;color:var(--muted);font-size:15px;line-height:1.8}.toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:30px 0 18px}.toolbar label{font-size:13px;color:var(--muted);margin-left:auto}.workspace{display:grid;grid-template-columns:1fr 1fr;gap:20px}.panel{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}.panelhead{display:flex;justify-content:space-between;align-items:center;padding:17px 20px;border-bottom:1px solid var(--line)}.panelhead label{font-size:15px;font-weight:650}.panelhead span{font-size:12px;color:var(--muted)}textarea{display:block;width:100%;height:430px;resize:vertical;min-height:260px;border:0;border-radius:0;padding:20px;background:#fff;color:#24364a;font-family:ui-monospace,Consolas,monospace;font-size:14px;line-height:1.7;tab-size:2}#output{background:#f9fbfb}textarea:focus{outline-offset:-3px}#notice{min-height:49px;margin:18px 0 0;padding:12px 16px;border-radius:9px;background:#eaf3f0;color:#24594e;font-size:14px;line-height:1.7;white-space:pre-wrap}#notice.error{background:#fff0ed;color:#a13525}.footer{font-size:12px;color:var(--muted);margin-top:20px;line-height:1.7}@media(max-width:700px){main{padding:28px 18px}.workspace{grid-template-columns:1fr}.toolbar label{margin-left:0}.panelhead{padding:15px}textarea{height:300px}h1{font-size:28px}}
+</style>
+</head>
+<body><main>
+<header><div class="eyebrow">DEVELOPER TOOLS</div><h1>把 JSON 整理清楚。</h1><p>粘贴内容，检查语法，再复制一份整齐的结果。</p></header>
+<div class="toolbar"><button id="format" class="primary">格式化</button><button id="copy" disabled>复制结果</button><button id="clear">清空</button><button id="example">试用示例</button><label for="indent">缩进</label><select id="indent"><option value="2">2 个空格</option><option value="4">4 个空格</option></select></div>
+<div class="workspace"><section class="panel"><div class="panelhead"><label for="input">原始 JSON</label><span id="input-count">0 字符</span></div><textarea id="input" spellcheck="false" placeholder='在这里粘贴 JSON，例如：&#10;{"name":"小林","courses":["设计","编程"]}'></textarea></section><section class="panel"><div class="panelhead"><label for="output">格式化结果</label><span id="output-count">等待格式化</span></div><textarea id="output" readonly spellcheck="false" placeholder="格式化成功后，结果会显示在这里。"></textarea></section></div>
+<p id="notice" role="status" aria-live="polite">支持对象、数组及其他合法 JSON 值。按 Ctrl / ⌘ + Enter 格式化。</p>
+<p class="footer">处理在当前浏览器中完成，内容不会上传。JSON 属性名和字符串需要使用双引号。</p>
+</main><script>
+'use strict';
+const input=document.getElementById('input'),output=document.getElementById('output'),notice=document.getElementById('notice'),copyButton=document.getElementById('copy');
+function tell(message,error=false){notice.textContent=message;notice.classList.toggle('error',error)}
+function resetResult(){output.value='';copyButton.disabled=true;document.getElementById('output-count').textContent='等待格式化'}
+function updateInput(){document.getElementById('input-count').textContent=input.value.length+' 字符';resetResult();tell('内容已更新，点击“格式化”生成结果。')}
+function formatJson(){
+ resetResult();if(!input.value.trim()){tell('请先粘贴 JSON，或点击“试用示例”开始。',true);input.focus();return}
+ try{const data=JSON.parse(input.value);output.value=JSON.stringify(data,null,Number(document.getElementById('indent').value));copyButton.disabled=false;document.getElementById('output-count').textContent=output.value.length+' 字符';tell('格式化完成，可以复制结果。')}
+ catch(error){let location='';const match=error.message.match(/position\s+(\d+)/i);if(match){const pos=Number(match[1]),before=input.value.slice(0,pos),line=before.split('\n').length,col=pos-before.lastIndexOf('\n');location='第 '+line+' 行，第 '+col+' 列附近。';input.focus();input.setSelectionRange(pos,Math.min(pos+1,input.value.length))}tell('JSON 语法有误。'+location+'\n请检查双引号、括号是否成对，以及最后一项后是否多了逗号；修改后再次点击“格式化”。\n浏览器提示：'+error.message,true)}
+}
+async function copyResult(){if(!output.value)return;try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(output.value)}else{output.focus();output.select();if(!document.execCommand('copy'))throw new Error('copy failed')}tell('结果已复制。')}catch{output.focus();output.select();tell('浏览器未允许自动复制。结果已选中，请按 Ctrl / ⌘ + C 手动复制。',true)}}
+document.getElementById('format').addEventListener('click',formatJson);copyButton.addEventListener('click',copyResult);
+document.getElementById('clear').addEventListener('click',()=>{input.value='';document.getElementById('input-count').textContent='0 字符';resetResult();tell('已清空。粘贴新的 JSON 即可继续。');input.focus()});
+document.getElementById('example').addEventListener('click',()=>{input.value='{"name":"小林","active":true,"courses":[{"title":"设计入门","lessons":12},{"title":"编程基础","lessons":18}]}';updateInput();formatJson()});
+input.addEventListener('input',updateInput);input.addEventListener('keydown',event=>{if((event.ctrlKey||event.metaKey)&&event.key==='Enter'){event.preventDefault();formatJson()}});document.getElementById('indent').addEventListener('change',()=>{if(output.value)formatJson()});
+</script></body></html>

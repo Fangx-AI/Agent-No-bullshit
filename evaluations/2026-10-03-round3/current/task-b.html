@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>播客预约</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#34283c;background:#f6f2fa;color-scheme:light}*{box-sizing:border-box}body{margin:0}main{max-width:920px;padding:55px 24px;margin:auto}.eyebrow{color:#87609b;letter-spacing:.12em;font-weight:700;font-size:13px}h1{font-size:36px;margin:12px 0}p{color:#776782;line-height:1.7}.layout{display:grid;grid-template-columns:1.7fr 1fr;gap:22px;margin-top:28px}form,aside{background:#fff;border:1px solid #e3d9ec;border-radius:18px;padding:28px}aside{background:#ede5f5;align-self:start}label,legend{font-weight:650;font-size:14px}input{display:block;width:100%;font:inherit;color:#34283c;padding:12px 14px;border:1px solid #d8cee2;border-radius:9px;margin:8px 0 22px;background:white}input:focus-visible,button:focus-visible{outline:3px solid #ceb7e4;outline-offset:3px}fieldset{border:0;padding:0;margin:0 0 24px}.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:10px}.slot{font:inherit;display:block;border:1px solid #d9cce3;padding:12px 5px;border-radius:9px;color:#573d69;background:#fff;cursor:pointer}.slot[aria-pressed=true]{border-color:#72508b;background:#72508b;color:white}.slot:disabled{background:#f5f3f7;color:#a49baa;cursor:default}.slot small{display:block;font-size:10px;margin-top:4px}.submit{width:100%;padding:14px;font:inherit;border:0;border-radius:10px;background:#72508b;color:white;cursor:pointer}.submit:disabled{opacity:.6;cursor:wait}.status{min-height:24px;margin:16px 0 0;font-size:14px;color:#72508b}.status.error{color:#ab3939}h2{font-size:18px;margin:0 0 14px}.detail{font-size:14px;border-top:1px solid #ddcfe8;padding-top:16px}.detail p{margin:6px 0}.badge{display:inline-block;background:#fff8;color:#72508b;border-radius:30px;padding:5px 10px;font-size:12px;margin-bottom:18px}.result{margin-top:20px;padding:18px;border:1px solid #cbb9db;border-radius:12px;background:#f7f2fc}.result p{margin:7px 0;font-size:14px}.email{overflow-wrap:anywhere}@media(max-width:700px){main{padding:32px 18px}.layout{grid-template-columns:1fr}form,aside{padding:22px}h1{font-size:30px}}
+</style></head>
+<body><main><div class="eyebrow">慢慢聊 / PODCAST</div><h1>为一次好对话留出时间</h1><p>选择你方便的日期与时段，预约一场 45 分钟的播客交流。</p>
+<div class="layout"><form id="booking" novalidate><label for="date">日期</label><input id="date" name="date" type="date" required><fieldset><legend>可选时段 · 北京时间</legend><div id="slots" class="slots"></div></fieldset><label for="name">姓名</label><input id="name" name="name" autocomplete="name" maxlength="60" placeholder="怎么称呼你" required><label for="email">邮箱</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="name@example.com" required><button id="submit" class="submit" type="submit">提交演示预约</button><p id="status" class="status" role="status" aria-live="polite"></p><div id="result" class="result" hidden aria-live="polite"></div></form>
+<aside><span class="badge">演示预约</span><h2>关于这场对话</h2><p>聊聊你的经历、作品，以及那些值得被听见的想法。</p><div class="detail"><p>时长：45 分钟</p><p>时区：北京时间（UTC+8）</p><p id="choice">请选择日期和时段。</p></div><p style="font-size:12px;margin-bottom:0">本页使用演示时段，提交后展示预约结果，不会创建实际预约或发送邮件。</p></aside></div></main>
+<script>
+'use strict';
+const form=document.getElementById('booking'),date=document.getElementById('date'),nameInput=document.getElementById('name'),email=document.getElementById('email'),slots=document.getElementById('slots'),submit=document.getElementById('submit'),status=document.getElementById('status'),result=document.getElementById('result'),choice=document.getElementById('choice');
+const times=['09:00','10:00','11:00','14:00','15:00','16:00'];let selected='',timer=null,revision=0;
+const today=new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Shanghai'});date.min=today;date.value=today;
+function message(text,error=false){status.textContent=text;status.className='status'+(error?' error':'');}
+function invalidate(){revision++;if(timer!==null){clearTimeout(timer);timer=null;}submit.disabled=false;submit.textContent='提交演示预约';result.hidden=true;result.replaceChildren();message('');}
+function validDate(){return /^\d{4}-\d{2}-\d{2}$/.test(date.value)&&date.value>=today;}
+function updateChoice(){choice.textContent=validDate()?(date.value+' · '+(selected||'请选择时段')):'请选择日期和时段。';}
+function renderSlots(){
+  selected='';slots.replaceChildren();
+  if(!validDate()){const text=document.createElement('p');text.textContent='请选择今天或之后的日期。';text.style.gridColumn='1 / -1';slots.append(text);updateChoice();return;}
+  const dayIndex=Math.floor(Date.parse(date.value+'T00:00:00Z')/86400000);
+  const nowMinutes=Number(new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Shanghai',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(new Date()).slice(0,2))*60+Number(new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Shanghai',minute:'2-digit'}).format(new Date()));
+  let available=0;
+  times.forEach((time,index)=>{const button=document.createElement('button');button.type='button';button.className='slot';button.textContent=time;button.setAttribute('aria-pressed','false');const minutes=Number(time.slice(0,2))*60;const past=date.value===today&&minutes<=nowMinutes;const full=(dayIndex+index)%5===0;button.disabled=past||full;if(button.disabled){const note=document.createElement('small');note.textContent=past?'已过时':'已约满';button.append(note);}else available++;button.addEventListener('click',()=>{invalidate();selected=time;for(const item of slots.children)item.setAttribute('aria-pressed',String(item===button));updateChoice();});slots.append(button);});
+  if(!available)message('这天暂无可选时段，请选择其他日期。');updateChoice();
+}
+date.addEventListener('input',()=>{invalidate();renderSlots();});[nameInput,email].forEach(input=>input.addEventListener('input',invalidate));
+form.addEventListener('submit',event=>{
+  event.preventDefault();invalidate();
+  if(!validDate()){message('请选择今天或之后的日期。',true);date.focus();return;}
+  if(!selected){message('请选择一个可用时段。',true);slots.querySelector('button:not(:disabled)')?.focus();return;}
+  if(!nameInput.value.trim()){message('请填写姓名。',true);nameInput.focus();return;}
+  if(!email.value.trim()||!email.validity.valid){message('请填写有效邮箱，例如 name@example.com。',true);email.focus();return;}
+  const snapshot={date:date.value,time:selected,name:nameInput.value.trim(),email:email.value.trim()},version=revision;submit.disabled=true;submit.textContent='正在生成…';message('正在生成演示预约…');
+  timer=setTimeout(()=>{timer=null;if(version!==revision)return;const heading=document.createElement('h2');heading.textContent='演示预约已生成';result.append(heading);[snapshot.name+' · '+snapshot.date+' '+snapshot.time+'（北京时间）',snapshot.email,'本次提交未创建实际预约。'].forEach(text=>{const p=document.createElement('p');p.className='email';p.textContent=text;result.append(p);});result.hidden=false;submit.disabled=false;submit.textContent='提交演示预约';message('可修改信息后重新提交。');},400);
+});
+renderSlots();
+</script></body></html>

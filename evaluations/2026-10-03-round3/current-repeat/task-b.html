@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>声间 · 播客预约</title>
+<style>
+:root{font-family:Inter,"Microsoft YaHei",system-ui,sans-serif;color:#242d42;background:#f7f5ef;font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #91a4e6;outline-offset:3px}header{height:82px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;border-bottom:1px solid #e0ded7}.brand{font-weight:800;font-size:21px}.brand b{color:#566ed5}.pill{font-size:12px;color:#7d795f;background:#eeeade;padding:7px 12px;border-radius:20px}main{max-width:1080px;margin:50px auto;padding:0 24px;display:grid;grid-template-columns:350px 1fr;gap:54px}.intro{padding-top:22px}.eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;color:#727f9e}h1{font-size:40px;line-height:1.3;margin:17px 0 20px;letter-spacing:-1px}.intro p{font-size:15px;line-height:1.9;color:#777e8f}.cover{background:#e7eaf6;border-radius:17px;height:190px;margin:30px 0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.circle{border:1px solid #bdc7eb;border-radius:50%;width:165px;height:165px;display:flex;align-items:center;justify-content:center}.inner{border:1px solid #bdc7eb;border-radius:50%;width:125px;height:125px;display:flex;align-items:center;justify-content:center}.wave{display:flex;align-items:center;gap:6px}.wave i{display:block;width:6px;background:#667dd6;border-radius:5px;height:25px}.wave i:nth-child(2),.wave i:nth-child(6){height:45px}.wave i:nth-child(3),.wave i:nth-child(5){height:65px}.wave i:nth-child(4){height:82px}.meta{border-top:1px solid #deded8;padding-top:20px;display:flex;gap:36px;color:#626b7e;font-size:12px}.meta strong{display:block;margin-bottom:8px;color:#303b56;font-size:14px}.card{background:white;border:1px solid #e3e3e6;border-radius:18px;padding:30px;box-shadow:0 8px 30px #313f6d06}h2{font-size:21px;margin:0 0 7px}.desc{color:#8c91a0;font-size:13px;margin:0 0 26px}.field{margin-bottom:22px}.field>label,.field-title{font-size:13px;font-weight:700;display:block;margin-bottom:10px}.field-title span{font-size:12px;color:#9197a5;font-weight:400;margin-left:8px}input{width:100%;background:#fff;border:1px solid #d9deea;border-radius:8px;padding:12px 13px;color:#303b55;font-size:14px}input:focus{border-color:#677dd4}.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.slot{background:#fff;color:#4c5b77;border:1px solid #d9deea;padding:12px 5px;border-radius:8px;font-size:14px}.slot[aria-pressed="true"]{background:#eff2ff;border-color:#6278d2;color:#4058b1;font-weight:700}.slot:disabled{background:#f5f5f7;color:#a6a9b1;border-color:#ededf0;cursor:not-allowed}.slot small{display:block;font-size:10px;margin-top:5px}.slot:hover:not(:disabled){border-color:#677dd4}.two{display:grid;grid-template-columns:1fr 1fr;gap:15px}.primary{display:block;width:100%;border:0;border-radius:9px;background:#556dca;color:#fff;padding:14px;font-weight:700}.primary:hover{background:#485fbb}.notice{font-size:12px;color:#8790a3;line-height:1.7;margin:13px 0 0}.status{min-height:20px;font-size:13px;line-height:1.7;margin:10px 0;color:#a24b39}.receipt{border:1px solid #bad7ca;background:#f1f8f4;border-radius:10px;margin-top:20px;padding:17px;color:#355a49}.receipt h3{font-size:15px;margin:0 0 12px}.receipt dl{font-size:13px;margin:0;display:grid;grid-template-columns:54px 1fr;gap:8px}.receipt dt{color:#7a9286}.receipt dd{margin:0;overflow-wrap:anywhere}[hidden]{display:none!important}@media(max-width:850px){main{grid-template-columns:1fr;gap:26px;margin:28px auto;max-width:630px}.intro{padding:0}h1{font-size:32px}.cover{display:none}.meta{gap:38px;padding-top:13px;margin-top:18px}header{height:67px}.card{padding:24px}.two{grid-template-columns:1fr;gap:0}}
+</style>
+</head>
+<body>
+<header><div class="brand"><b>◉</b> 声间</div><span class="pill">演示预约</span></header>
+<main>
+<aside class="intro"><div class="eyebrow">MAKE TIME FOR A GOOD CONVERSATION</div><h1>留一段时间，<br>聊点有意思的。</h1><p>选择录制日期和时段，<br>开始准备你的下一期播客。</p><div class="cover" aria-hidden="true"><div class="circle"><div class="inner"><div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div></div><div class="meta"><div><strong>60 分钟</strong>单次录制时长</div><div><strong>北京时间</strong>时段使用 UTC+8</div></div></aside>
+<section class="card"><h2>预约录制</h2><p class="desc">以下时段为演示数据，提交后生成预约预览。</p>
+<form id="booking" novalidate>
+<div class="field"><label for="date">录制日期</label><input id="date" type="date" required aria-describedby="date-note"><p class="notice" id="date-note">可选择今天起 14 天内的日期。</p></div>
+<div class="field"><div class="field-title" id="slot-label">可选时段 <span id="slot-date"></span></div><div id="slots" class="slots" role="group" aria-labelledby="slot-label"></div><p class="notice" id="slot-note"></p></div>
+<div class="two"><div class="field"><label for="name">姓名</label><input id="name" name="name" autocomplete="name" maxlength="40" required placeholder="怎么称呼你"></div><div class="field"><label for="email">邮箱</label><input id="email" name="email" type="email" autocomplete="email" maxlength="120" required placeholder="you@example.com"></div></div>
+<div class="status" id="status" role="status" aria-live="polite"></div>
+<button class="primary" type="submit">生成演示预约</button><p class="notice">此页面只生成预览，预约不会发送。</p>
+</form>
+<section class="receipt" id="receipt" hidden aria-live="polite"><h3>演示预约已生成 · 未发送</h3><dl><dt>时间</dt><dd id="receipt-time"></dd><dt>姓名</dt><dd id="receipt-name"></dd><dt>邮箱</dt><dd id="receipt-email"></dd></dl></section>
+</section>
+</main>
+<script>
+'use strict';
+// PURE_START
+function dateKey(date) { return date.getFullYear()+'-'+String(date.getMonth()+1).padStart(2,'0')+'-'+String(date.getDate()).padStart(2,'0'); }
+function parseDate(key) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(key)) return null;
+  const [year,month,day]=key.split('-').map(Number), date=new Date(year,month-1,day,12);
+  return dateKey(date)===key ? date : null;
+}
+function dateLimits(now) {
+  const beijing=new Date(now.getTime()+8*60*60*1000);
+  const today=new Date(Date.UTC(beijing.getUTCFullYear(),beijing.getUTCMonth(),beijing.getUTCDate(),12));
+  const last=new Date(today); last.setUTCDate(last.getUTCDate()+13);
+  const key=date=>date.getUTCFullYear()+'-'+String(date.getUTCMonth()+1).padStart(2,'0')+'-'+String(date.getUTCDate()).padStart(2,'0');
+  return {min:key(today),max:key(last)};
+}
+function availableSlots(key) {
+  const date=parseDate(key); if (!date) return [];
+  const times=['10:00','11:30','14:00','15:30','17:00','18:30'];
+  return times.map((time,index)=>({time,available:date.getDay()!==0 && (date.getDate()+index)%4!==0}));
+}
+function validateBooking(value, now) {
+  const limits=dateLimits(now);
+  if (!parseDate(value.date) || value.date<limits.min || value.date>limits.max) return '请选择今天起 14 天内的日期。';
+  if (!availableSlots(value.date).some(slot=>slot.time===value.time && slot.available)) return '请选择一个可预约的时段。';
+  if (!value.name.trim()) return '请填写姓名。';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.email.trim())) return '请填写完整的邮箱，例如 you@example.com。';
+  return '';
+}
+// PURE_END
+const form=document.getElementById('booking'), dateInput=document.getElementById('date');
+const nameInput=document.getElementById('name'), emailInput=document.getElementById('email');
+const slots=document.getElementById('slots'), status=document.getElementById('status'), receipt=document.getElementById('receipt');
+let selectedTime='';
+function refreshLimits() { const range=dateLimits(new Date()); dateInput.min=range.min; dateInput.max=range.max; }
+function clearReceipt() { receipt.hidden=true; status.textContent=''; }
+function renderSlots() {
+  slots.replaceChildren(); selectedTime='';
+  const date=parseDate(dateInput.value), range=dateLimits(new Date());
+  document.getElementById('slot-date').textContent=date ? (date.getMonth()+1)+' 月 '+date.getDate()+' 日' : '';
+  if (!date || dateInput.value<range.min || dateInput.value>range.max) { document.getElementById('slot-note').textContent='先选择有效日期，再选择时段。'; return; }
+  const options=availableSlots(dateInput.value);
+  options.forEach(option=>{
+    const button=document.createElement('button'); button.type='button'; button.className='slot'; button.disabled=!option.available;
+    button.setAttribute('aria-pressed','false'); button.textContent=option.time;
+    if (!option.available) { const label=document.createElement('small'); label.textContent='不可预约'; button.append(label); }
+    button.addEventListener('click',()=>{
+      selectedTime=option.time; clearReceipt();
+      [...slots.children].forEach(child=>child.setAttribute('aria-pressed', String(child===button)));
+      document.getElementById('slot-note').textContent='已选择 '+selectedTime+'，录制时长 60 分钟。';
+    });
+    slots.append(button);
+  });
+  document.getElementById('slot-note').textContent=options.some(option=>option.available) ? '请选择一个时段。' : '当天没有可选时段，请换一个日期。';
+}
+refreshLimits(); dateInput.value=dateInput.min; renderSlots();
+dateInput.addEventListener('input',()=>{refreshLimits();clearReceipt();renderSlots();});
+nameInput.addEventListener('input',clearReceipt); emailInput.addEventListener('input',clearReceipt);
+form.addEventListener('submit',event=>{
+  event.preventDefault(); clearReceipt(); refreshLimits();
+  const value={date:dateInput.value,time:selectedTime,name:nameInput.value,email:emailInput.value};
+  const problem=validateBooking(value,new Date());
+  if (problem) {
+    status.textContent=problem;
+    if (problem.includes('日期')) dateInput.focus();
+    else if (problem.includes('时段')) { const first=slots.querySelector('button:not(:disabled)'); if(first)first.focus(); }
+    else if (problem.includes('姓名')) nameInput.focus(); else emailInput.focus();
+    return;
+  }
+  if (!form.checkValidity()) { status.textContent='请检查姓名和邮箱后重试。'; form.reportValidity(); return; }
+  const date=parseDate(value.date);
+  document.getElementById('receipt-time').textContent=date.getFullYear()+' 年 '+(date.getMonth()+1)+' 月 '+date.getDate()+' 日 '+value.time+'（北京时间）';
+  document.getElementById('receipt-name').textContent=value.name.trim(); document.getElementById('receipt-email').textContent=value.email.trim(); receipt.hidden=false;
+});
+</script>
+</body>
+</html>

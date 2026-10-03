@@ -1,0 +1,23 @@
+const fs=require('node:fs');
+const vm=require('node:vm');
+const assert=require('node:assert/strict');
+const dir=require('node:path').join(__dirname,'final-one');
+let checks=0;
+const check=(name,fn)=>{fn();checks++;console.log('PASS '+name);};
+function core(file,name){const html=fs.readFileSync(dir+'/'+file,'utf8');const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m=>m[1]);assert.equal(scripts.length,1);new vm.Script(scripts[0],{filename:file});checks++;console.log('PASS '+file+' JavaScript syntax');const source=scripts[0].slice(0,scripts[0].indexOf('\n(() => {'));return vm.runInNewContext(source+'\n'+name,{Date,Intl,Set});}
+const B=core('task-b.html','BookingCore');
+const base='2026-10-03';
+check('B future date window and Sunday availability',()=>{assert.equal(B.available(base,base),false);assert.equal(B.available('2026-10-04',base),false);assert.equal(B.available('2026-10-05',base),true);assert.equal(B.available(B.addDays(base,61),base),false);assert.equal(B.available(B.addDays(base,60),base),true);});
+check('B month/year rollover and slot duration',()=>{assert.equal(B.addDays('2026-12-31',1),'2027-01-01');assert.equal(B.addDays('2028-02-28',1),'2028-02-29');assert.equal(B.endTime('16:00'),'16:30');});
+check('B actual slot availability, name and email validation',()=>{const date='2026-10-05',slot=B.slots(date).find(s=>s.available).start;const data={date,slot,name:'小林',email:'lin@example.com'};assert.equal(B.validate(data,base),null);assert.equal(B.validate({...data,slot:'10:00'},base).field,'slot');assert.equal(B.validate({...data,name:'  '},base).field,'name');assert.equal(B.validate({...data,email:'lin@'},base).field,'email');assert.equal(B.validate({...data,email:'lin@example'},base).field,'email');assert.equal(B.validate({...data,name:'<script>文字</script>'},base),null);});
+const C=core('task-c.html','MaterialCore');
+const start={v:1,items:[{id:'a',name:'第一讲',createdAt:3},{id:'b',name:'JSON 阅读',createdAt:2},{id:'c',name:'复习清单',createdAt:1}],pending:[]};
+check('C add preserves previous records and Unicode names',()=>{const next=C.add(start,{id:'d',name:'课程笔记 📚',createdAt:4});assert.equal(next.items.length,4);assert.equal(start.items.length,3);assert.equal(next.items[0].name,'课程笔记 📚');});
+check('C case-insensitive search with whitespace',()=>{assert.equal(C.search(start.items,' json ').length,1);assert.equal(C.search(start.items,'第一').length,1);assert.equal(C.search(start.items,'不存在').length,0);});
+check('C selected deletion and unrelated records',()=>{const {next,count}=C.remove(start,['a','b','missing'],'batch',1000);assert.equal(count,2);assert.equal(next.items.length,1);assert.equal(next.items[0].id,'c');assert.equal(next.pending[0].expiresAt,31000);assert.equal(start.items.length,3);});
+check('C undo at 29999ms and rejection at exact 30000ms',()=>{const removed=C.remove(start,['a','b'],'batch',1000).next;const before=C.undo(removed,'batch',30999);assert.equal(before.count,2);assert.equal(before.next.items.length,3);assert.equal(before.next.pending.length,0);assert.equal(C.undo(removed,'batch',31000).count,0);assert.equal(C.undo(removed,'batch',32000).next.items.length,1);});
+check('C reload preserves absolute deadline and removes expired batch',()=>{const saved=C.remove(start,['a'],'batch',1000).next;const read=C.decode(JSON.stringify(saved));assert.equal(C.expire(read,20000).next.pending.length,1);assert.equal(C.expire(read,31000).next.pending.length,0);assert.equal(C.undo(C.expire(read,31000).next,'batch',32000).count,0);});
+check('C multiple batches have independent deadlines and counts',()=>{const first=C.remove(start,['a'],'first',1000).next;const both=C.remove(first,['b'],'second',5000).next;const expired=C.expire(both,31000);assert.equal(expired.expired.length,1);assert.equal(expired.expired[0].items.length,1);assert.equal(expired.next.pending.length,1);assert.equal(C.undo(expired.next,'second',32000).count,1);assert.equal(C.undo(expired.next,'first',32000).count,0);});
+check('C undo retry recomputes time instead of replaying restoration',()=>{const removed=C.remove(start,['a'],'batch',1000).next;const retryOperation=current=>C.undo(current,'batch',31000);const result=retryOperation(C.expire(removed,31000).next);assert.equal(result.count,0);assert.equal(result.next.items.some(i=>i.id==='a'),false);});
+check('C invalid persisted data is rejected',()=>{assert.equal(C.decode(null),null);assert.throws(()=>C.decode('{'));assert.throws(()=>C.decode('{"v":1,"items":{},"pending":[]}'));assert.throws(()=>C.decode('{"v":1,"items":[{"id":"x","name":"x"}],"pending":[]}'));});
+console.log('TOTAL '+checks+' checks passed. Browser/DOM/clipboard/storage failure UI were not run.');
