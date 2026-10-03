@@ -1,34 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="760" viewBox="0 0 1440 760" role="img" aria-labelledby="title desc">
-<title id="title">Less friction. Same task.</title>
-<desc id="desc">示意上传界面：删除无用长文与重复确认，保留操作与文件限制。</desc>
-<defs><style>text{font-family:Arial,'Microsoft YaHei','Noto Sans CJK SC',sans-serif}.label{font-size:19px;font-weight:700;letter-spacing:3px}.body{font-size:21px}.small{font-size:18px}</style></defs>
-<rect width="1440" height="760" rx="24" fill="#101110"/>
-<text x="64" y="65" fill="#ccff00" class="label">LESS FRICTION. SAME TASK.</text>
-<text x="64" y="118" fill="#fff" font-size="32" font-weight="700">同一个上传任务，两种用户体验。</text>
-<rect x="64" y="166" width="632" height="500" rx="16" fill="#1b1d1b" stroke="#373a37"/>
-<rect x="744" y="166" width="632" height="500" rx="16" fill="#f5f6f1"/>
-<text x="96" y="213" fill="#999e99" class="label">BEFORE / 太多说明</text>
-<text x="776" y="213" fill="#43513a" class="label">AFTER / 直接操作</text>
-<path d="M96 240H664" stroke="#373a37"/><path d="M776 240H1344" stroke="#d8ddd2"/>
-<text x="100" y="286" fill="#fff" font-size="27" font-weight="700">上传图片</text>
-<rect x="96" y="309" width="568" height="133" rx="8" fill="#282b27"/>
-<text x="116" y="343" fill="#bec2b9" class="small">请确保您拥有上传内容的合法权利，</text>
-<text x="116" y="372" fill="#bec2b9" class="small">并已充分了解相关隐私及数据处理风险。</text>
-<text x="116" y="401" fill="#bec2b9" class="small">继续使用即表示您理解并承担相应责任。</text>
-<rect x="100" y="465" width="19" height="19" rx="3" fill="none" stroke="#82877e"/>
-<text x="132" y="482" fill="#bec2b9" class="small">我已阅读并同意以上说明</text>
-<rect x="100" y="506" width="19" height="19" rx="3" fill="none" stroke="#82877e"/>
-<text x="132" y="523" fill="#bec2b9" class="small">我再次确认上传内容符合要求</text>
-<rect x="96" y="559" width="568" height="62" rx="9" fill="#353a33"/>
-<text x="380" y="598" text-anchor="middle" fill="#969e91" class="body">确认并继续</text>
-<rect x="784" y="282" width="552" height="247" rx="12" fill="#e9ede2" stroke="#b8c3ab" stroke-dasharray="7 6"/>
-<rect x="1036" y="324" width="48" height="48" rx="12" fill="#101110"/>
-<path d="M1060 358V338m-8 8 8-8 8 8" fill="none" stroke="#ccff00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="1060" y="412" text-anchor="middle" fill="#161a13" font-size="27" font-weight="700">把图片拖到这里</text>
-<text x="1060" y="448" text-anchor="middle" fill="#59634f" class="body">支持 JPG、PNG，最大 10 MB</text>
-<rect x="952" y="473" width="216" height="42" rx="7" fill="#ccff00"/>
-<text x="1060" y="502" text-anchor="middle" fill="#101110" font-size="20" font-weight="700">选择图片</text>
-<text x="1060" y="586" text-anchor="middle" fill="#37432c" class="body">信息到位，用户就能开始。</text>
-<text x="64" y="714" fill="#9ea59a" class="small">ILLUSTRATIVE UI · 示意界面，文件限制以实际产品为准</text>
-<text x="1376" y="714" text-anchor="end" fill="#ccff00" class="small">AGENT-NO-BULLSHIT</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="800" viewBox="0 0 1440 800" role="img" aria-labelledby="title desc">
+<title id="title">上传图片：修改前与修改后</title>
+<desc id="desc">相同样式的上传界面，修改后删掉无依据的说明与重复确认，保留选择图片按钮和文件限制。</desc>
+<defs><style>text{font-family:Arial,'Microsoft YaHei','Noto Sans CJK SC',sans-serif}.body{font-size:22px;fill:#68707a}.label{font-size:22px;fill:#68707a}</style></defs>
+<rect width="1440" height="800" fill="#fff"/>
+<text x="48" y="64" font-size="30" font-weight="700" fill="#202124">上传图片</text>
+<text x="48" y="104" class="body">删掉无依据的说明和重复确认，保留操作需要的信息。</text>
+<path d="M48 134H1392" stroke="#e2e5e9"/>
+<text x="48" y="178" class="label">修改前</text><text x="760" y="178" class="label">修改后</text>
+<rect x="48" y="204" width="632" height="490" rx="4" fill="#fff" stroke="#d5d9de"/>
+<rect x="760" y="204" width="632" height="490" rx="4" fill="#fff" stroke="#d5d9de"/>
+<text x="84" y="266" font-size="27" font-weight="700" fill="#202124">上传图片</text>
+<text x="796" y="266" font-size="27" font-weight="700" fill="#202124">上传图片</text>
+<rect x="84" y="296" width="560" height="134" rx="2" fill="#f6f7f8"/>
+<text x="104" y="332" font-size="20" fill="#555c65">请确保您拥有上传内容的合法权利，</text>
+<text x="104" y="364" font-size="20" fill="#555c65">并已充分了解相关隐私及数据处理风险。</text>
+<text x="104" y="396" font-size="20" fill="#555c65">继续使用即表示您理解并承担相应责任。</text>
+<rect x="84" y="461" width="20" height="20" rx="2" fill="#fff" stroke="#8b929a"/>
+<text x="120" y="479" font-size="20" fill="#434951">我已阅读并同意以上说明</text>
+<rect x="84" y="506" width="20" height="20" rx="2" fill="#fff" stroke="#8b929a"/>
+<text x="120" y="524" font-size="20" fill="#434951">我再次确认上传内容符合要求</text>
+<rect x="84" y="566" width="182" height="49" rx="4" fill="#f0f1f3" stroke="#d5d9de"/>
+<text x="175" y="598" text-anchor="middle" font-size="21" fill="#969ba3">确认并继续</text>
+<text x="84" y="654" font-size="19" fill="#68707a">支持 JPG、PNG，最大 10 MB</text>
+<text x="796" y="310" class="body">支持 JPG、PNG，最大 10 MB</text>
+<rect x="796" y="346" width="182" height="49" rx="4" fill="#202124"/>
+<text x="887" y="378" text-anchor="middle" font-size="21" fill="#fff">选择图片</text>
+<path d="M48 733H1392" stroke="#e2e5e9"/>
+<text x="48" y="773" font-size="19" fill="#68707a">界面示意 · 格式与大小限制以实际产品为准</text>
 </svg>
