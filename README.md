@@ -121,7 +121,7 @@ git clone https://github.com/Fangx-AI/Agent-No-bullshit.git (Join-Path $skillRoo
 
 ## 简洁，也要准确。
 
-[查看实际评估与失败记录](evaluations/2026-10-03/REPORT.md)：第一轮发现局部表达改善和异步状态问题，补充验收规则后完成针对性复测。
+[查看两轮实际评估](evaluations/2026-10-03-round2/REPORT.md)：记录有无 Skill 的对照、发现的问题和修订后复测。第一轮有局部表达改善，第二轮中基线也表现良好；不宣称每次都更好。
 
 复杂问题可以讲透。具体操作后果、真实错误和未完成的验证都要说清。已有协议和必要告知，应先弄清用途再决定是否修改。
 
