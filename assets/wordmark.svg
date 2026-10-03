@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="214" viewBox="0 0 1200 214" role="img" aria-labelledby="title">
+  <title id="title">Agent-No-bullshit — Codex skill</title>
+  <rect width="1200" height="214" fill="#f5f3ee"/>
+  <rect x="36" y="30" width="12" height="12" fill="#bf3b2c"/>
+  <text x="62" y="43" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#242424">AGENT</text>
+  <text x="1164" y="43" text-anchor="end" font-family="Consolas,'Liberation Mono',monospace" font-size="15" letter-spacing="1" fill="#68645e">CODEX SKILL</text>
+  <text x="32" y="161" font-family="'Arial Black',Arial,Helvetica,sans-serif" font-size="108" font-weight="900" letter-spacing="-5" fill="#242424">NO BULLSHIT</text>
+  <path d="M36 191H1164" stroke="#c8c3ba"/>
+</svg>
