@@ -1,80 +1,85 @@
-# Agent-No-bullshit
+<p align="center">
+  <img src="assets/hero.png" alt="Agent-No-bullshit — Less talk. More shipped." width="100%">
+</p>
 
-**让 Codex 少说废话，做出更干净的产品。**
+<h1 align="center">Agent-No-bullshit</h1>
 
-Less ceremony. Better products.
+<p align="center"><strong>让 Agent 少说废话，让产品少一点多余。</strong></p>
+<p align="center">一个约束 Codex 沟通方式与产品文案的 Skill。</p>
 
-[查看 Skill](SKILL.md) · [安装](#安装) · [使用](#使用) · [效果示例](#效果示例)
+<p align="center">
+  <a href="#30-秒开始">快速安装</a> ·
+  <a href="SKILL.md">阅读规则</a> ·
+  <a href="#看得见的变化">效果对比</a> ·
+  <a href="https://github.com/Fangx-AI/Agent-No-bullshit/issues">提交案例</a>
+</p>
 
 ---
 
-你让 Codex 做一个上传页面，结果它给你加了版权声明、隐私提示、责任说明和三个确认框。
+## 少一点废话，多一点产品。
 
-你让它修一个按钮，结果它先解释一遍计划，再提醒潜在风险，最后附上一份上线注意事项。
+你要一个上传按钮，它给你一段版权声明。你要修一个菜单，它先讲计划，再讲风险，最后讲上线注意事项。
 
-功能还没多复杂，用户已经要读很多字。
+**用户想完成任务，不想阅读 Agent 的心理活动。**
 
-**Agent-No-bullshit 把一句话变成执行标准：这段话对用户到底有什么用？**
+Agent-No-bullshit 同时管两件事：开发时怎么说，产品里写什么。让每句话服务于操作、理解或决策。
 
-## 它改变什么
+<table>
+<tr>
+<td width="33%" valign="top">
 
-| 场景 | Agent-No-bullshit 的要求 |
-| --- | --- |
-| 需求已经明确 | 直接推进，减少重复表态和确认 |
-| 汇报进度 | 只说新发现、关键取舍和真实阻塞 |
-| 写产品文案 | 帮助用户操作、理解状态或作出决定 |
-| 添加提醒 | 必须有具体依据，放在相关操作旁边 |
-| 交付结果 | 说明做了什么、如何验证、还有什么没完成 |
+### 01 / 直接做
 
-不是把所有回答压成一句话。复杂问题可以讲透，简单任务不要灌水。
+需求明确就推进。少重复计划，少反复确认。进度只讲有用的新事实。
 
-## 效果示例
+</td>
+<td width="33%" valign="top">
 
-下面是行为示例，不是实测记录或效果保证。
+### 02 / 写有用的
 
-### 图片上传
+按钮、提示和错误信息服务于当前任务。没有具体用途的说明，不往界面里塞。
 
-**多余的版本**
+</td>
+<td width="33%" valign="top">
 
-> 请确保您拥有上传内容的合法权利，并已充分了解相关隐私及数据处理风险。继续使用即表示您理解并同意承担相应责任。
+### 03 / 交付结果
 
-**有用的版本**
+说清完成了什么、验证了什么、还缺什么。简单任务，几句话结束。
 
-> 支持 JPG、PNG，最大 10 MB。
+</td>
+</tr>
+</table>
 
-格式和大小应来自产品的真实限制。
+## 看得见的变化
 
-### 开发交付
+<p align="center">
+  <img src="assets/before-after.svg" alt="上传界面对比：左边堆满说明和确认，右边只保留上传入口与真实格式限制。" width="100%">
+</p>
 
-**多余的版本**
+*示意设计，用于展示判断方式；格式与大小限制应以真实产品为准。*
 
-> 我已经完成了相关修改。需要注意的是，在实际部署到生产环境前，建议进一步综合评估兼容性、安全性以及可能存在的潜在风险……
+| 场景 | 删掉什么 | 留下什么 |
+| :--- | :--- | :--- |
+| 图片上传 | 无具体依据的免责长文、重复确认 | 格式、大小、失败后的处理办法 |
+| 开发汇报 | 重复计划、空泛表态、模板式风险清单 | 实际结果、验证情况、真实阻塞 |
+| 不可恢复的删除 | 泛泛的责任说明 | “删除这 12 条记录？删除后无法恢复。” |
+| AI 工具界面 | 习惯性堆叠的免责声明 | 当前用途确实需要用户知道的信息 |
 
-**有用的版本**
+> **判断标准：这句话，会改变用户下一步的行动或理解吗？**
 
-> 已修复移动端导航，构建通过。尚未在真机上验证。
+## 30 秒开始
 
-只报告实际完成的验证。
-
-### 删除记录
-
-**该留的就留**
-
-> 删除这 12 条记录？删除后无法恢复。
-
-这句话帮助用户作出决定，有实际用途。
-
-## 安装
-
-将仓库放入 Codex 的 Skills 目录，文件夹名保留为 `agent-no-bullshit`。
-
-**macOS / Linux**
+<details open>
+<summary><strong>macOS / Linux</strong></summary>
 
 ```bash
 git clone https://github.com/Fangx-AI/Agent-No-bullshit.git "${CODEX_HOME:-$HOME/.codex}/skills/agent-no-bullshit"
 ```
 
-**Windows PowerShell**
+</details>
+
+<details>
+<summary><strong>Windows PowerShell</strong></summary>
 
 ```powershell
 $skillRoot = if ($env:CODEX_HOME) { Join-Path $env:CODEX_HOME 'skills' } else { Join-Path $env:USERPROFILE '.codex\skills' }
@@ -82,50 +87,61 @@ New-Item -ItemType Directory -Force -Path $skillRoot | Out-Null
 git clone https://github.com/Fangx-AI/Agent-No-bullshit.git (Join-Path $skillRoot 'agent-no-bullshit')
 ```
 
-上面的命令适用于首次安装。已安装时，在该仓库目录执行 `git pull --ff-only` 更新。
+</details>
 
-## 使用
-
-在请求里加上 `$agent-no-bullshit`：
+然后，在 Codex 里说：
 
 ```text
 使用 $agent-no-bullshit，帮我做一个图片压缩工具。
 ```
 
+已安装的用户在仓库目录运行 `git pull --ff-only` 更新。Skill 保留默认自动发现设置，显式调用能清楚表达本次偏好。
+
+## 把它用在真实工作里
+
+**做产品**
+
 ```text
-使用 $agent-no-bullshit，检查这个页面的文案。
-删掉没有实际用途的免责声明、说明和确认步骤，保留必要的操作信息。
+使用 $agent-no-bullshit，做一个待办应用。
+直接推进，界面只保留完成任务需要的信息。
 ```
+
+**清理已有界面**
+
+```text
+使用 $agent-no-bullshit，检查这个页面的文案和确认步骤。
+删除没有实际用途的内容，保留必要的操作信息。
+```
+
+**修问题并交付**
 
 ```text
 使用 $agent-no-bullshit，修复移动端菜单并验证结果。
 ```
 
-Skill 保留默认的自动发现设置；显式调用可以更清楚地表达这次任务的偏好。它不会自动改写你的全局配置，也不保证每一轮都自动生效。
+## 简洁，也要准确。
 
-## 保留什么
+复杂问题可以讲透。具体操作后果、真实错误和未完成的验证都要说清。已有协议和必要告知，应先弄清用途再决定是否修改。
 
-具体的操作后果、真实错误、未完成的验证，以及有明确依据的必要告知，都应该准确表达。
+这份 Skill 调整表达与设计取舍，不改写全局配置，也不覆盖 Codex 的更高优先级指令。
 
-判断标准不是有没有“风险”两个字，而是：**用户此刻是否需要这条信息？**
-
-Skill 调整表达与产品设计取舍，不能覆盖 Codex 的更高优先级指令。
-
-## 仓库结构
+<details>
+<summary><strong>仓库里有什么？</strong></summary>
 
 ```text
 agent-no-bullshit/
-├── SKILL.md             # Codex 执行规则
+├── SKILL.md             # 执行规则
 ├── agents/openai.yaml   # 显示名称与调用提示
-└── README.md            # 项目介绍与安装方法
+├── assets/              # 首页视觉素材
+└── README.md            # 你正在读的这一页
 ```
 
-## 改进它
+</details>
 
-欢迎通过 Issue 或 PR 提交真实案例：原始请求、出现的多余文案、你期望的结果。请先移除私密信息。
+## 用案例，让它变好。
 
-优先修正能复现的问题，避免为了一个例子不断堆规则。
+欢迎提交 [Issue](https://github.com/Fangx-AI/Agent-No-bullshit/issues) 或 PR：附上原始请求、多余文案和你期望的结果，移除私密信息即可。优先修正真实问题，不为了一个例子堆一页规则。
 
 ---
 
-**每句话都该有用。**
+<p align="center"><strong>Less talk. More shipped.</strong><br><sub>每句话都该有用。</sub></p>
