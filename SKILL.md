@@ -1,9 +1,9 @@
 ---
-name: no-bullshit
+name: agent-no-bullshit
 description: 在开发或修改产品、页面、交互和用户文案时，减少执行中的空话与未经需求支持的合规说明。用户要求少说废话、删掉多余免责声明、保持产品体验简洁时使用。
 ---
 
-# No bullshit
+# Agent-No-bullshit
 
 把精力放在完成产品和改善用户体验上。用户不需要为模型的顾虑阅读额外文案。
 

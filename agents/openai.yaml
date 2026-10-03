@@ -1,4 +1,4 @@
 interface:
-  display_name: "No bullshit"
+  display_name: "Agent-No-bullshit"
   short_description: "减少 Codex 的执行废话与产品中的多余合规文案，让每句话都对用户有用"
-  default_prompt: "使用 $no-bullshit 完成产品开发，直接推进工作，删除没有实际用途的说明。"
+  default_prompt: "使用 $agent-no-bullshit 完成产品开发，直接推进工作，删除没有实际用途的说明。"

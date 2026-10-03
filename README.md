@@ -1,4 +1,4 @@
-# No bullshit
+# Agent-No-bullshit
 
 **让 Codex 少说废话，做出更干净的产品。**
 
@@ -14,11 +14,11 @@ Less ceremony. Better products.
 
 功能还没多复杂，用户已经要读很多字。
 
-**No bullshit 把一句话变成执行标准：这段话对用户到底有什么用？**
+**Agent-No-bullshit 把一句话变成执行标准：这段话对用户到底有什么用？**
 
 ## 它改变什么
 
-| 场景 | No bullshit 的要求 |
+| 场景 | Agent-No-bullshit 的要求 |
 | --- | --- |
 | 需求已经明确 | 直接推进，减少重复表态和确认 |
 | 汇报进度 | 只说新发现、关键取舍和真实阻塞 |
@@ -66,12 +66,12 @@ Less ceremony. Better products.
 
 ## 安装
 
-将仓库放入 Codex 的 Skills 目录，文件夹名保留为 `no-bullshit`。
+将仓库放入 Codex 的 Skills 目录，文件夹名保留为 `agent-no-bullshit`。
 
 **macOS / Linux**
 
 ```bash
-git clone https://github.com/Fangx-AI/no-bullshit.git "${CODEX_HOME:-$HOME/.codex}/skills/no-bullshit"
+git clone https://github.com/Fangx-AI/Agent-No-bullshit.git "${CODEX_HOME:-$HOME/.codex}/skills/agent-no-bullshit"
 ```
 
 **Windows PowerShell**
@@ -79,26 +79,26 @@ git clone https://github.com/Fangx-AI/no-bullshit.git "${CODEX_HOME:-$HOME/.code
 ```powershell
 $skillRoot = if ($env:CODEX_HOME) { Join-Path $env:CODEX_HOME 'skills' } else { Join-Path $env:USERPROFILE '.codex\skills' }
 New-Item -ItemType Directory -Force -Path $skillRoot | Out-Null
-git clone https://github.com/Fangx-AI/no-bullshit.git (Join-Path $skillRoot 'no-bullshit')
+git clone https://github.com/Fangx-AI/Agent-No-bullshit.git (Join-Path $skillRoot 'agent-no-bullshit')
 ```
 
 上面的命令适用于首次安装。已安装时，在该仓库目录执行 `git pull --ff-only` 更新。
 
 ## 使用
 
-在请求里加上 `$no-bullshit`：
+在请求里加上 `$agent-no-bullshit`：
 
 ```text
-使用 $no-bullshit，帮我做一个图片压缩工具。
+使用 $agent-no-bullshit，帮我做一个图片压缩工具。
 ```
 
 ```text
-使用 $no-bullshit，检查这个页面的文案。
+使用 $agent-no-bullshit，检查这个页面的文案。
 删掉没有实际用途的免责声明、说明和确认步骤，保留必要的操作信息。
 ```
 
 ```text
-使用 $no-bullshit，修复移动端菜单并验证结果。
+使用 $agent-no-bullshit，修复移动端菜单并验证结果。
 ```
 
 Skill 保留默认的自动发现设置；显式调用可以更清楚地表达这次任务的偏好。它不会自动改写你的全局配置，也不保证每一轮都自动生效。
@@ -114,7 +114,7 @@ Skill 调整表达与产品设计取舍，不能覆盖 Codex 的更高优先级�
 ## 仓库结构
 
 ```text
-no-bullshit/
+agent-no-bullshit/
 ├── SKILL.md             # Codex 执行规则
 ├── agents/openai.yaml   # 显示名称与调用提示
 └── README.md            # 项目介绍与安装方法
