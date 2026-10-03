@@ -4,6 +4,8 @@
 
 <h1 align="center">Agent-No-bullshit</h1>
 
+<p align="center"><strong>中文</strong> · <a href="README.en.md">English</a></p>
+
 <p align="center"><strong>让 Agent 少说废话，让产品少一点多余。</strong></p>
 <p align="center">一个约束 Codex 沟通方式与产品文案的 Skill。</p>
 
@@ -134,9 +136,11 @@ git clone https://github.com/Fangx-AI/Agent-No-bullshit.git (Join-Path $skillRoo
 ```text
 agent-no-bullshit/
 ├── SKILL.md             # 执行规则
+├── SKILL.en.md          # 执行规则英文译本
 ├── agents/openai.yaml   # 显示名称与调用提示
 ├── assets/              # 首页视觉素材
-└── README.md            # 你正在读的这一页
+├── README.en.md         # 英文首页
+└── README.md            # 中文首页
 ```
 
 </details>
