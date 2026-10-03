@@ -1,0 +1,151 @@
+{
+  "input": "index.html",
+  "inputSHA256": "dc5b120668c0aed8a7d3ee74366d9a73e7806575ea6a0b49c1f8a6b752f19c83",
+  "testType": "Node VM minimal DOM/Canvas stubs, not browser",
+  "allPassed": true,
+  "results": [
+    {
+      "case": "quality-change-during-encoding",
+      "stale": {
+        "quality": "20",
+        "downloadEnabled": false,
+        "status": "正在压缩…",
+        "after": "",
+        "resultURL": null,
+        "lastDownload": null
+      },
+      "latest": {
+        "quality": "20",
+        "downloadEnabled": true,
+        "status": "已完成，减少 80.0%",
+        "after": "压缩后 · 2.0 KB",
+        "resultURL": "blob:2",
+        "lastDownload": {
+          "name": "old-compressed.jpg",
+          "output": {
+            "size": 2000,
+            "type": "image/jpeg",
+            "encodedQuality": 0.2
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "quality-change-after-completion",
+      "pending": {
+        "quality": "10",
+        "downloadEnabled": false,
+        "status": "正在压缩…",
+        "after": "",
+        "resultURL": null,
+        "lastDownload": null
+      },
+      "done": {
+        "quality": "10",
+        "downloadEnabled": true,
+        "status": "已完成，减少 90.0%",
+        "after": "压缩后 · 1000 B",
+        "resultURL": "blob:3",
+        "lastDownload": {
+          "name": "old-compressed.jpg",
+          "output": {
+            "size": 1000,
+            "type": "image/jpeg",
+            "encodedQuality": 0.1
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "file-change-during-encoding",
+      "stale": {
+        "quality": "80",
+        "downloadEnabled": false,
+        "status": "正在压缩…",
+        "after": "",
+        "resultURL": null,
+        "lastDownload": null
+      },
+      "done": {
+        "quality": "80",
+        "downloadEnabled": true,
+        "status": "已完成，减少 20.0%",
+        "after": "压缩后 · 7.8 KB",
+        "resultURL": "blob:3",
+        "lastDownload": {
+          "name": "new-compressed.jpg",
+          "output": {
+            "size": 8000,
+            "type": "image/jpeg",
+            "encodedQuality": 0.8
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "encoding-failure-and-quality-retry",
+      "failed": {
+        "quality": "80",
+        "downloadEnabled": false,
+        "status": "压缩失败，请调整质量重试或重新选择图片。",
+        "after": "",
+        "resultURL": null,
+        "lastDownload": null
+      },
+      "retryPending": {
+        "quality": "60",
+        "downloadEnabled": false,
+        "status": "正在压缩…",
+        "after": "",
+        "resultURL": null,
+        "lastDownload": null
+      },
+      "recovered": {
+        "quality": "60",
+        "downloadEnabled": true,
+        "status": "已完成，减少 40.0%",
+        "after": "压缩后 · 5.9 KB",
+        "resultURL": "blob:2",
+        "lastDownload": {
+          "name": "old-compressed.jpg",
+          "output": {
+            "size": 6000,
+            "type": "image/jpeg",
+            "encodedQuality": 0.6
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "invalid-file-and-file-retry",
+      "failed": {
+        "quality": "80",
+        "downloadEnabled": false,
+        "status": "无法读取图片，请选择有效的 JPG/PNG（最多 4000 万像素）。",
+        "after": "",
+        "resultURL": null,
+        "lastDownload": null
+      },
+      "recovered": {
+        "quality": "80",
+        "downloadEnabled": true,
+        "status": "已完成，减少 20.0%",
+        "after": "压缩后 · 7.8 KB",
+        "resultURL": "blob:5",
+        "lastDownload": {
+          "name": "retry-compressed.jpg",
+          "output": {
+            "size": 8000,
+            "type": "image/jpeg",
+            "encodedQuality": 0.8
+          }
+        }
+      },
+      "pass": true
+    }
+  ]
+}

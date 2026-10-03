@@ -1,0 +1,104 @@
+{
+  "testType": "Node VM with minimal DOM and Canvas stubs; not browser interaction",
+  "results": [
+    {
+      "case": "change-quality-after-completion",
+      "observed": {
+        "format": "image/jpeg",
+        "quality": "10",
+        "downloadVisible": false,
+        "downloadName": "original-压缩.jpg",
+        "downloadType": null,
+        "status": "原图：9.8 KB\n结果：4.9 KB · 减少 50.0%",
+        "buttonDisabled": false
+      },
+      "misleadingOldStatus": true
+    },
+    {
+      "case": "change-format-after-completion",
+      "observed": {
+        "format": "image/png",
+        "quality": "80",
+        "downloadVisible": false,
+        "downloadName": "original-压缩.jpg",
+        "downloadType": null,
+        "status": "原图：9.8 KB\n结果：4.9 KB · 减少 50.0%",
+        "buttonDisabled": false
+      },
+      "misleadingOldStatus": true
+    },
+    {
+      "case": "change-format-during-encoding",
+      "encoding": {
+        "type": "image/jpeg",
+        "quality": 0.8
+      },
+      "observed": {
+        "format": "image/png",
+        "quality": "80",
+        "downloadVisible": true,
+        "downloadName": "original-压缩.jpg",
+        "downloadType": "image/jpeg",
+        "status": "原图：9.8 KB\n结果：4.9 KB · 减少 50.0%",
+        "buttonDisabled": false
+      },
+      "staleResult": true
+    },
+    {
+      "case": "change-quality-during-encoding",
+      "encoding": {
+        "type": "image/jpeg",
+        "quality": 0.8
+      },
+      "observed": {
+        "format": "image/jpeg",
+        "quality": "20",
+        "downloadVisible": true,
+        "downloadName": "original-压缩.jpg",
+        "downloadType": "image/jpeg",
+        "status": "原图：9.8 KB\n结果：4.9 KB · 减少 50.0%",
+        "buttonDisabled": false
+      },
+      "staleResult": true
+    },
+    {
+      "case": "change-file-during-encoding",
+      "observed": {
+        "format": "image/jpeg",
+        "quality": "80",
+        "downloadVisible": false,
+        "downloadName": null,
+        "downloadType": null,
+        "status": "原图：9.8 KB · 100 × 100",
+        "buttonDisabled": false
+      },
+      "oldResultVisible": false
+    },
+    {
+      "case": "encoding-failure",
+      "observed": {
+        "format": "image/jpeg",
+        "quality": "80",
+        "downloadVisible": false,
+        "downloadName": null,
+        "downloadType": null,
+        "status": "压缩失败，图片可能过大。请缩小图片尺寸后重试。",
+        "buttonDisabled": false
+      },
+      "failureHandled": true
+    },
+    {
+      "case": "change-to-invalid-file-during-encoding",
+      "observed": {
+        "format": "image/jpeg",
+        "quality": "80",
+        "downloadVisible": false,
+        "downloadName": null,
+        "downloadType": null,
+        "status": "无法读取这张图片，请换一张 JPG 或 PNG。",
+        "buttonDisabled": true
+      },
+      "failureHandled": true
+    }
+  ]
+}
